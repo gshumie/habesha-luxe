@@ -28,30 +28,30 @@ export function HeroSection() {
         {/* Left Column: Headline, Brand Story, & CTAs */}
         <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left z-10">
           {/* Eyebrow Pill */}
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-obsidian-850/80 border border-gold-500/30 backdrop-blur-sm shadow-md animate-in fade-in duration-500">
+          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-crimsonGlow to-obsidian-850 border border-gold-500/40 backdrop-blur-sm shadow-md animate-in fade-in duration-500">
             <Sparkles className="w-4 h-4 text-gold-400 animate-spin-slow" />
-            <span className="text-xs uppercase tracking-[0.25em] text-gold-300 font-semibold">
-              The Sovereign Collection 2025 • ጥበብ እና ቅርስ
+            <span className="text-xs uppercase tracking-[0.25em] text-gold-300 font-bold">
+              💍 Wedding Season Exclusive • የሰርግ ወቅት ልዩ ቅናሽ
             </span>
           </div>
 
           {/* Main Title */}
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-6xl xl:text-7xl font-serif font-black tracking-tight text-ivory-100 leading-[1.08]">
-              Royal Ethiopian <br />
+          <div className="space-y-3">
+            <h1 className="text-3xl sm:text-5xl xl:text-6xl font-serif font-black tracking-tight text-ivory-100 leading-[1.12]">
+              Up To 55% OFF — <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-300 via-gold-500 to-amber-600">
-                Haute Couture
+                The Wedding Season is Here 💍
               </span>
             </h1>
-            <p className="font-serif text-lg sm:text-xl text-gold-400/90 tracking-[0.3em] uppercase">
-              ንጉሣዊ የሀበሻ ቀሚስ እና ዘመናዊ ጥበብ
+            <p className="font-serif text-base sm:text-xl text-gold-400/95 tracking-[0.2em] uppercase font-semibold">
+              Royal Ethiopian Haute Couture & Bespoke Bridal Kemis
             </p>
           </div>
 
           {/* Subtitle Description */}
           <p className="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-            Where 3,000 years of Ethiopian textile royalty meet contemporary haute couture. 
-            Hand-spun organic cotton, 24k gold tilf embroidery, and tailored made-to-measure masterpieces crafted by generational master Shemane weavers.
+            Celebrate your Serg, Melse, and ceremonial festivities in authentic Ethiopian grandeur. 
+            Featuring our newly unveiled Royal Purple & Gold Star Tilf, Crimson Couples Sets, and Modern Yellow-Gold Tunics handspun by master Shemane artisans.
           </p>
 
           {/* Call-to-Action Buttons */}
@@ -99,8 +99,8 @@ export function HeroSection() {
           {/* Central Featured Image Card */}
           <div className="relative w-full max-w-[360px] sm:max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden border-2 border-gold-500/40 shadow-2xl shadow-gold-500/15 group">
             <Image
-              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85"
-              alt="Queen Menen Imperial Tibeb Kemis"
+              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85"
+              alt="Haute Couture Ethiopian Bridal Kemis with Traditional Gold Jewelry"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 400px"
@@ -112,16 +112,17 @@ export function HeroSection() {
             {/* Overlaid Card Info */}
             <div className="absolute bottom-5 inset-x-5 p-4 rounded-xl bg-obsidian-900/90 backdrop-blur-md border border-gold-500/30 shadow-xl space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] text-gold-400 font-bold uppercase tracking-widest">
-                  Featured Masterpiece
+                <span className="text-[10px] text-gold-400 font-bold uppercase tracking-widest flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-gold-400" />
+                  Wedding Season Exclusive
                 </span>
-                <span className="text-xs font-bold text-gold-400 font-serif">18,500 ETB</span>
+                <span className="text-xs font-bold text-gold-400 font-serif">Up to 55% OFF</span>
               </div>
               <h3 className="text-sm font-serif font-bold text-ivory-100">
-                Queen Menen Imperial Tibeb Kemis
+                Imperial Royal Sheba Bridal Gala Kemis
               </h3>
               <p className="text-[11px] text-zinc-400 line-clamp-1">
-                Woven in Dorze highlands with pure 24k gold metallic tilf.
+                Albo/Koda-style royal gold filigree with hand-embroidered corset bodice.
               </p>
             </div>
 

@@ -27,22 +27,47 @@ export function ProductQuickViewModal() {
     notes: "",
   });
 
+  React.useEffect(() => {
+    if (quickViewProduct) {
+      const initialSize = quickViewProduct.availableSizes[0] || "M";
+      setSelectedSize(initialSize);
+      setSelectedImageIndex(0);
+      setQuantity(1);
+      const isCustom =
+        initialSize === "Custom Measurement" ||
+        initialSize === "Custom Fit" ||
+        initialSize === "Custom Tailored" ||
+        initialSize.toLowerCase().includes("custom") ||
+        initialSize.toLowerCase().includes("tailor");
+      setShowMeasurementsForm(isCustom);
+    }
+  }, [quickViewProduct]);
+
   if (!isQuickViewOpen || !quickViewProduct) return null;
 
   const handleSizeSelect = (size: ProductSize) => {
     setSelectedSize(size);
-    if (size === "Custom Measurement") {
-      setShowMeasurementsForm(true);
-    } else {
-      setShowMeasurementsForm(false);
-    }
+    const isCustom =
+      size === "Custom Measurement" ||
+      size === "Custom Fit" ||
+      size === "Custom Tailored" ||
+      size.toLowerCase().includes("custom") ||
+      size.toLowerCase().includes("tailor");
+    setShowMeasurementsForm(isCustom);
   };
+
+  const isCustomSize =
+    selectedSize === "Custom Measurement" ||
+    selectedSize === "Custom Fit" ||
+    selectedSize === "Custom Tailored" ||
+    selectedSize.toLowerCase().includes("custom") ||
+    selectedSize.toLowerCase().includes("tailor");
 
   const handleAddToCart = () => {
     addItem(
       quickViewProduct,
       selectedSize,
-      selectedSize === "Custom Measurement" ? measurements : undefined,
+      isCustomSize ? measurements : undefined,
       quantity
     );
 
@@ -79,11 +104,22 @@ export function ProductQuickViewModal() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
-            {quickViewProduct.featured && (
-              <span className="absolute top-3 left-3 bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
-                Imperial Couture
-              </span>
-            )}
+            <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 items-start">
+              {quickViewProduct.badge ? (
+                <span className="bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+                  {quickViewProduct.badge}
+                </span>
+              ) : quickViewProduct.featured ? (
+                <span className="bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+                  Imperial Couture
+                </span>
+              ) : null}
+              {quickViewProduct.originalPriceETB && quickViewProduct.originalPriceETB > quickViewProduct.priceETB && (
+                <span className="bg-crimsonGlow text-white font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded shadow-md border border-red-500/30">
+                  -{Math.round(((quickViewProduct.originalPriceETB - quickViewProduct.priceETB) / quickViewProduct.originalPriceETB) * 100)}% OFF
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Thumbnails */}

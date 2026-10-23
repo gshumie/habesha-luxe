@@ -46,8 +46,18 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-black/20" />
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
-          {product.isBestSeller && (
+        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10 items-start">
+          {product.badge && (
+            <span className="bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+              {product.badge}
+            </span>
+          )}
+          {product.originalPriceETB && product.originalPriceETB > product.priceETB && (
+            <span className="bg-crimsonGlow text-white font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded shadow-md border border-red-500/30">
+              -{Math.round(((product.originalPriceETB - product.priceETB) / product.originalPriceETB) * 100)}% OFF
+            </span>
+          )}
+          {product.isBestSeller && !product.badge && (
             <span className="bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
               Imperial Choice
             </span>
@@ -116,8 +126,15 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Pricing & CTA footer */}
         <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-between">
           <div>
-            <div className="text-base sm:text-lg font-serif font-black text-gold-400">
-              {formatETB(product.priceETB)}
+            <div className="flex items-baseline space-x-2">
+              <span className="text-base sm:text-lg font-serif font-black text-gold-400">
+                {formatETB(product.priceETB)}
+              </span>
+              {product.originalPriceETB && product.originalPriceETB > product.priceETB && (
+                <span className="text-xs text-zinc-500 line-through">
+                  {formatETB(product.originalPriceETB)}
+                </span>
+              )}
             </div>
             {showUSD && (
               <div className="text-[11px] text-zinc-400 font-medium">

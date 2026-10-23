@@ -1,11 +1,12 @@
 export type ProductCategory =
   | "all"
   | "traditional-kemis"
+  | "couples-bridal"
   | "modern-tibeb"
   | "mens-attire"
   | "accessories";
 
-export type ProductSize = "S" | "M" | "L" | "XL" | "Custom Measurement";
+export type ProductSize = string;
 
 export interface CustomMeasurements {
   bust?: string; // in cm or inches
@@ -29,6 +30,7 @@ export interface Product {
   featured?: boolean;
   isNew?: boolean;
   isBestSeller?: boolean;
+  badge?: string; // e.g. "Best Seller", "Wedding Collection", "Trending", "Haute Couture"
   shortDescription: string;
   description: string;
   fabricDetails: string;
