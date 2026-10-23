@@ -9,6 +9,12 @@
 
 **Habesha Luxe** is a production-ready, fully responsive e-commerce web platform for authentic Ethiopian traditional and modern clothing (Habesha Kemis, Modern Tibeb fashion, Men's Imperial linen attire, and handspun Netela accessories) integrated directly with Ethiopia's leading payment gateway, **Chapa** (supporting **Telebirr**, **CBE Birr**, **Awash Birr**, and **Visa / Mastercard**).
 
+### 📞 Official Store Contact Information
+- **Store Email**: [getasewshumie@gmail.com](mailto:getasewshumie@gmail.com)
+- **Store Phone**: `0998164025` / `+251998164025`
+- **Atelier Location**: Bole Medhanialem, Edna Plaza, 4th Floor, Addis Ababa, Ethiopia
+- **GitHub Repository**: [https://github.com/gshumie/habesha-luxe.git](https://github.com/gshumie/habesha-luxe.git)
+
 ---
 
 ## 🌟 Brand & Visual Architecture

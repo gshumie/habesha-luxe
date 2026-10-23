@@ -98,7 +98,7 @@ export function BridalConsultationModal() {
                     <input
                       type="tel"
                       required
-                      placeholder="0911... or +1..."
+                      placeholder="0998164025 or +251998164025"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-obsidian-950 border border-gold-500/20 rounded-lg pl-9 pr-3 py-2 text-ivory-100 focus:outline-none focus:border-gold-400"
@@ -113,7 +113,7 @@ export function BridalConsultationModal() {
                     <input
                       type="email"
                       required
-                      placeholder="bethlehem@gmail.com"
+                      placeholder="getasewshumie@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full bg-obsidian-950 border border-gold-500/20 rounded-lg pl-9 pr-3 py-2 text-ivory-100 focus:outline-none focus:border-gold-400"
@@ -192,7 +192,8 @@ export function BridalConsultationModal() {
             <div className="bg-obsidian-950 p-4 rounded-xl border border-gold-500/20 text-xs text-left space-y-1.5 max-w-sm mx-auto">
               <div className="text-gold-400 font-semibold">VIP Bridal Concierge:</div>
               <div className="text-zinc-400">Addis Ababa Atelier: Bole Medhanialem, Edna Plaza</div>
-              <div className="text-zinc-400">Direct WhatsApp: +251 91 124 5678</div>
+              <div className="text-zinc-400">Direct WhatsApp / Phone: +251 99 816 4025 (0998164025)</div>
+              <div className="text-zinc-400">Official Email: getasewshumie@gmail.com</div>
             </div>
             <button
               onClick={() => {

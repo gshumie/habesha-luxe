@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag, Search, Menu, X, Crown, Sparkles, ShieldCheck } from "lucide-react";
+import { ShoppingBag, Search, Menu, X, Crown, Sparkles, ShieldCheck, Phone, Mail } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useUIStore } from "@/lib/store/useUIStore";
 import { TibebBorder } from "../ui/EthiopianPattern";
@@ -36,7 +36,15 @@ export function Navbar() {
             <Crown className="w-3.5 h-3.5 text-gold-400" />
             <span>Addis Ababa Free White-Glove Delivery</span>
             <span className="text-zinc-600">•</span>
-            <span>DHL Global Diaspora Shipping</span>
+            <a href="tel:+251998164025" className="hover:text-gold-300 transition-colors flex items-center space-x-1">
+              <Phone className="w-3 h-3" />
+              <span>0998164025 (+251998164025)</span>
+            </a>
+            <span className="text-zinc-600">•</span>
+            <a href="mailto:getasewshumie@gmail.com" className="hover:text-gold-300 transition-colors flex items-center space-x-1">
+              <Mail className="w-3 h-3" />
+              <span>getasewshumie@gmail.com</span>
+            </a>
           </div>
           <div className="mx-auto sm:mx-0 flex items-center space-x-3">
             <span className="text-ivory-200/80 hidden md:inline">

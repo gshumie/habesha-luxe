@@ -175,7 +175,7 @@ function CheckoutSuccessContent() {
                 <div>Habesha Luxe Couture Private Limited Co.</div>
                 <div>TIN: 0048192841 | VAT Reg: 78923410</div>
                 <div>Bole Sub-City, Woreda 03, Edna Plaza 4th Floor, Addis Ababa</div>
-                <div>Contact: +251 91 124 5678 | concierge@habeshaluxe.com</div>
+                <div>Contact: +251 99 816 4025 (0998164025) | getasewshumie@gmail.com</div>
               </div>
             </div>
 

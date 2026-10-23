@@ -49,11 +49,15 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-zinc-300">
                 <Phone className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                <span>+251 91 124 5678 / +251 11 662 8900</span>
+                <a href="tel:+251998164025" className="hover:text-gold-400 transition-colors">
+                  0998164025 (+251998164025)
+                </a>
               </div>
               <div className="flex items-center space-x-2 text-zinc-300">
                 <Mail className="w-3.5 h-3.5 text-gold-400 shrink-0" />
-                <span>concierge@habeshaluxe.com</span>
+                <a href="mailto:getasewshumie@gmail.com" className="hover:text-gold-400 transition-colors">
+                  getasewshumie@gmail.com
+                </a>
               </div>
             </div>
           </div>

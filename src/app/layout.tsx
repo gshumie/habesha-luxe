@@ -30,7 +30,9 @@ export const metadata: Metadata = {
     "CBE Birr",
     "Addis Ababa Fashion",
   ],
-  authors: [{ name: "Habesha Luxe Couture" }],
+  authors: [{ name: "Habesha Luxe Couture", url: "mailto:getasewshumie@gmail.com" }],
+  creator: "Getasew Shumie",
+  publisher: "Habesha Luxe",
   openGraph: {
     title: "Habesha Luxe | Ethiopian Haute Couture",
     description:

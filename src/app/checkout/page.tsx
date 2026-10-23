@@ -96,7 +96,7 @@ export default function CheckoutPage() {
       return;
     }
     if (!formData.phoneNumber.trim() || formData.phoneNumber.length < 9) {
-      setErrorMessage("Please enter an Ethiopian phone number (e.g. 0912345678 or +251...).");
+      setErrorMessage("Please enter an Ethiopian phone number (e.g. 0998164025 or +251998164025).");
       return;
     }
 
@@ -223,7 +223,7 @@ export default function CheckoutPage() {
                       <input
                         type="email"
                         required
-                        placeholder="almaz.bekele@gmail.com"
+                        placeholder="getasewshumie@gmail.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-obsidian-950 border border-gold-500/20 rounded-xl pl-9 pr-3 py-2.5 text-ivory-100 focus:outline-none focus:border-gold-400 text-xs"
@@ -243,7 +243,7 @@ export default function CheckoutPage() {
                       <input
                         type="tel"
                         required
-                        placeholder="0911234567 or +251..."
+                        placeholder="0998164025 or +251998164025"
                         value={formData.phoneNumber}
                         onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                         className="w-full bg-obsidian-950 border border-gold-500/20 rounded-xl pl-9 pr-3 py-2.5 text-ivory-100 focus:outline-none focus:border-gold-400 text-xs"

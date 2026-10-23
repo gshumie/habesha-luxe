@@ -141,7 +141,7 @@ export class ChapaService {
       data: {
         first_name: "Customer",
         last_name: "Name",
-        email: "customer@example.com",
+        email: "getasewshumie@gmail.com",
         currency: "ETB",
         amount: 0,
         charge: 0,

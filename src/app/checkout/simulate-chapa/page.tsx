@@ -11,12 +11,12 @@ function ChapaSimulatorContent() {
 
   const txRef = searchParams.get("tx_ref") || `HL-${Date.now()}`;
   const amountStr = searchParams.get("amount") || "18500";
-  const email = searchParams.get("email") || "customer@example.com";
+  const email = searchParams.get("email") || "getasewshumie@gmail.com";
   const name = searchParams.get("name") || "Valued Client";
   const amount = parseFloat(amountStr) || 18500;
 
   const [selectedMethod, setSelectedMethod] = useState<"telebirr" | "cbe" | "awash" | "card">("telebirr");
-  const [phoneOrCard, setPhoneOrCard] = useState("0912345678");
+  const [phoneOrCard, setPhoneOrCard] = useState("0998164025");
   const [pin, setPin] = useState("1234");
   const [processing, setProcessing] = useState(false);
 

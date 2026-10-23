@@ -7,7 +7,7 @@ export interface CustomerDetails {
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string; // e.g., 0912345678 or +251912345678
+  phoneNumber: string; // e.g., 0998164025 or +251998164025
   city: string; // e.g. Addis Ababa, Bahir Dar, Hawassa, etc.
   subCity?: string; // Bole, Kazanchis, Kirkos, Yeka, Nifas Silk, etc.
   woreda?: string;
