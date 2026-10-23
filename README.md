@@ -96,11 +96,16 @@
    - Processes asynchronous payment notifications and updates orders.
 
 ### 5. Admin Order & Dispatch Management Dashboard
-- Route: `/admin` (Protected by admin passcode: `habesha-luxe-admin-2025`)
+- Route: `/admin` & `/admin/login`
+- **Secure Email & Password Authentication**:
+  - Official Administrator Email: `getasewshumie@gmail.com`
+  - Password with show/hide toggle, Remember Me (30 days), and HMAC-SHA256 encrypted session cookies.
+  - Auto-redirect protection: unauthenticated users are redirected to `/admin/login`.
 - Live KPIs: Total Chapa Revenue in ETB, Total Orders, Paid vs. Pending orders.
 - Search & filter by customer, phone, or `tx_ref`.
 - Live status updater: `Processing`, `Tailoring`, `Out for Delivery`, `Delivered`, `Cancelled`.
 - Order modal with customer phone link, delivery notes, and direct link to printable tax invoice.
+- One-click Sign Out button with session revocation.
 
 ### 6. Private Bridal & Melse Concierge
 - Route: `/api/bridal-consultation` & interactive modal
@@ -208,7 +213,12 @@ CHAPA_WEBHOOK_SECRET=your_chapa_webhook_secret
 # Base URL
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-# Admin Access Passcode
+# Secure Admin Portal Credentials
+ADMIN_EMAIL=getasewshumie@gmail.com
+ADMIN_PASSWORD=SetYourStrongPassword2025!
+ADMIN_JWT_SECRET=habesha_luxe_secret_secure_key_2025
+
+# Legacy Passcode (fallback)
 ADMIN_SECRET_KEY=habesha-luxe-admin-2025
 
 # Simulation Mode (fallback for offline or test demo)

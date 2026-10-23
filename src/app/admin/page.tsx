@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ShieldCheck,
   Search,
@@ -20,19 +21,24 @@ import {
   DollarSign,
   ArrowLeft,
   Lock,
+  LogOut,
+  User,
+  Crown,
 } from "lucide-react";
 import { Order, DispatchStatus, PaymentStatus } from "@/types/order";
 import { formatETB, formatDate } from "@/lib/utils";
 
 export default function AdminOrdersPage() {
+  const router = useRouter();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authChecking, setAuthChecking] = useState(true);
+  const [adminEmail, setAdminEmail] = useState<string>("getasewshumie@gmail.com");
+  const [authenticated, setAuthenticated] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
-  const [authenticated, setAuthenticated] = useState(false);
-  const [passcode, setPasscode] = useState("");
-  const [authError, setAuthError] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -41,6 +47,9 @@ export default function AdminOrdersPage() {
       const data = await res.json();
       if (data.success && data.orders) {
         setOrders(data.orders);
+      } else if (res.status === 401) {
+        setAuthenticated(false);
+        router.replace("/admin/login");
       }
     } catch (err) {
       console.error("Failed to load orders:", err);
@@ -49,26 +58,41 @@ export default function AdminOrdersPage() {
     }
   };
 
+  // Verify Admin Session on mount
   useEffect(() => {
-    // If authenticated in session, fetch orders
-    const storedAuth = sessionStorage.getItem("hl_admin_auth");
-    if (storedAuth === "true") {
-      setAuthenticated(true);
-      fetchOrders();
-    } else {
-      setLoading(false);
-    }
-  }, []);
+    const verifyAuth = async () => {
+      try {
+        const res = await fetch("/api/admin/auth/check");
+        const data = await res.json();
+        if (data.authenticated) {
+          setAuthenticated(true);
+          if (data.email) setAdminEmail(data.email);
+          await fetchOrders();
+        } else {
+          setAuthenticated(false);
+          router.replace("/admin/login");
+        }
+      } catch (err) {
+        console.warn("Auth check error:", err);
+        setAuthenticated(false);
+        router.replace("/admin/login");
+      } finally {
+        setAuthChecking(false);
+      }
+    };
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (passcode === "habesha-luxe-admin-2025" || passcode === "admin") {
-      setAuthenticated(true);
-      sessionStorage.setItem("hl_admin_auth", "true");
-      setAuthError(false);
-      fetchOrders();
-    } else {
-      setAuthError(true);
+    verifyAuth();
+  }, [router]);
+
+  const handleSignOut = async () => {
+    setLoggingOut(true);
+    try {
+      await fetch("/api/admin/auth/logout", { method: "POST" });
+    } catch (err) {
+      console.error("Logout error:", err);
+    } finally {
+      setAuthenticated(false);
+      router.replace("/admin/login");
     }
   };
 
@@ -85,6 +109,8 @@ export default function AdminOrdersPage() {
         if (selectedOrder?.id === orderId) {
           setSelectedOrder(data.order);
         }
+      } else if (res.status === 401) {
+        router.replace("/admin/login");
       }
     } catch (err) {
       console.error("Failed to update status:", err);
@@ -118,6 +144,17 @@ export default function AdminOrdersPage() {
   const paidCount = orders.filter((o) => o.paymentStatus === "paid").length;
   const pendingCount = orders.filter((o) => o.paymentStatus === "pending").length;
 
+  if (authChecking) {
+    return (
+      <div className="min-h-screen bg-obsidian-950 flex flex-col items-center justify-center text-ivory-100">
+        <div className="w-12 h-12 border-3 border-gold-500/20 border-t-gold-400 rounded-full animate-spin mb-4" />
+        <p className="text-xs font-serif tracking-widest text-gold-400 uppercase">
+          Verifying Admin Authorization...
+        </p>
+      </div>
+    );
+  }
+
   if (!authenticated) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center p-4 bg-obsidian-950">
@@ -127,47 +164,18 @@ export default function AdminOrdersPage() {
           </div>
           <div>
             <h2 className="font-serif text-xl font-bold text-ivory-100">
-              Admin & Store Portal
+              Authentication Required
             </h2>
             <p className="text-xs text-zinc-400 mt-1">
-              Habesha Luxe Order & Dispatch Management
+              Please sign in with your admin credentials to access store operations.
             </p>
           </div>
-
-          <form onSubmit={handleLogin} className="space-y-3 text-xs">
-            <input
-              type="password"
-              placeholder="Enter Admin Passcode..."
-              value={passcode}
-              onChange={(e) => setPasscode(e.target.value)}
-              className="w-full bg-obsidian-950 border border-zinc-700 rounded-xl px-3.5 py-2.5 text-ivory-100 focus:outline-none focus:border-gold-400 text-xs"
-              autoFocus
-            />
-
-            {authError && (
-              <p className="text-[11px] text-red-400">
-                Invalid passcode. (Hint: <code>habesha-luxe-admin-2025</code>)
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-serif font-black text-xs uppercase tracking-wider shadow-lg shadow-gold-500/20"
-            >
-              Access Dashboard
-            </button>
-          </form>
-
-          <div className="pt-2 border-t border-zinc-800">
-            <button
-              onClick={() => {
-                setPasscode("habesha-luxe-admin-2025");
-              }}
-              className="text-[11px] text-gold-400 hover:underline"
-            >
-              Fill Demo Passcode (habesha-luxe-admin-2025)
-            </button>
-          </div>
+          <Link
+            href="/admin/login"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-serif font-black text-xs uppercase tracking-wider shadow-lg shadow-gold-500/20 block hover:brightness-110 transition-all"
+          >
+            Go to Admin Login
+          </Link>
         </div>
       </div>
     );
@@ -177,7 +185,7 @@ export default function AdminOrdersPage() {
     <div className="min-h-screen py-10 bg-obsidian-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Top Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gold-500/20 pb-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-gold-500/20 pb-6">
           <div>
             <div className="flex items-center space-x-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
               <ShieldCheck className="w-4 h-4" />
@@ -188,7 +196,13 @@ export default function AdminOrdersPage() {
             </h1>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Authenticated Admin Badge */}
+            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-obsidian-900 border border-gold-500/30 text-xs text-ivory-200">
+              <Crown className="w-3.5 h-3.5 text-gold-400" />
+              <span className="text-[11px] font-medium text-gold-300">{adminEmail}</span>
+            </div>
+
             <button
               onClick={fetchOrders}
               className="p-2.5 rounded-xl bg-obsidian-900 border border-zinc-700 text-zinc-300 hover:text-gold-400 hover:border-gold-500/40 transition-colors"
@@ -196,12 +210,23 @@ export default function AdminOrdersPage() {
             >
               <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
             </button>
+
             <Link
               href="/"
-              className="px-4 py-2.5 rounded-xl bg-gold-500 text-obsidian-950 font-serif font-bold text-xs uppercase tracking-wider hover:brightness-110 transition-all"
+              className="px-4 py-2.5 rounded-xl bg-obsidian-850 hover:bg-obsidian-800 border border-gold-500/30 text-ivory-100 font-serif font-bold text-xs uppercase tracking-wider transition-all"
             >
-              View Storefront
+              View Boutique
             </Link>
+
+            <button
+              onClick={handleSignOut}
+              disabled={loggingOut}
+              className="px-3.5 py-2.5 rounded-xl bg-red-950/60 hover:bg-red-900/60 border border-red-500/40 text-red-300 font-bold text-xs uppercase tracking-wider transition-colors flex items-center space-x-1.5"
+              title="Sign Out of Admin Portal"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>{loggingOut ? "Signing Out..." : "Sign Out"}</span>
+            </button>
           </div>
         </div>
 
