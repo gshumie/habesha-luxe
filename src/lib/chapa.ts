@@ -2,13 +2,23 @@ import { ChapaInitializePayload, ChapaInitializeResponse, ChapaVerifyResponse } 
 
 const CHAPA_API_URL = "https://api.chapa.co/v1";
 
+function resolveBaseUrl(): string {
+  if (process.env.NEXT_PUBLIC_BASE_URL) {
+    return process.env.NEXT_PUBLIC_BASE_URL.replace(/\/$/, "");
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`;
+  }
+  return "http://localhost:3000";
+}
+
 export class ChapaService {
   private secretKey: string;
   private baseUrl: string;
 
   constructor() {
-    this.secretKey = process.env.CHAPA_SECRET_KEY || "";
-    this.baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    this.secretKey = (process.env.CHAPA_SECRET_KEY || "").trim();
+    this.baseUrl = resolveBaseUrl();
   }
 
   /**
@@ -40,10 +50,12 @@ export class ChapaService {
       customTitle?: string;
       customDescription?: string;
       meta?: Record<string, string | number>;
+      baseUrl?: string;
     }
   ): Promise<{ checkoutUrl: string; isSimulated: boolean }> {
-    const callbackUrl = `${this.baseUrl}/api/payment/webhook`;
-    const returnUrl = `${this.baseUrl}/checkout/success?tx_ref=${params.txRef}`;
+    const activeBaseUrl = (params.baseUrl || this.baseUrl || resolveBaseUrl()).replace(/\/$/, "");
+    const callbackUrl = `${activeBaseUrl}/api/payment/webhook`;
+    const returnUrl = `${activeBaseUrl}/checkout/success?tx_ref=${encodeURIComponent(params.txRef)}`;
 
     const payload: ChapaInitializePayload = {
       amount: params.amount.toString(),
@@ -90,10 +102,10 @@ export class ChapaService {
     }
 
     // Sandbox / Simulation Gateway
-    const simulateUrl = `${this.baseUrl}/checkout/simulate-chapa?tx_ref=${encodeURIComponent(
+    const simulateUrl = `/checkout/simulate-chapa?tx_ref=${encodeURIComponent(
       params.txRef
     )}&amount=${params.amount}&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(
-      `${params.firstName} ${params.lastName}`
+      `${params.firstName} ${params.lastName}`.trim()
     )}`;
 
     return {

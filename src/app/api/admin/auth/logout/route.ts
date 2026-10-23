@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
   const isLocalhost = host.includes("localhost") || host.includes("127.0.0.1");
   const isSecure = req.nextUrl.protocol === "https:" || (process.env.NODE_ENV === "production" && !isLocalhost);
 
-  // Expire/clear session cookie
+  // Expire/clear session cookie completely
+  response.cookies.delete(ADMIN_COOKIE_NAME);
   response.cookies.set({
     name: ADMIN_COOKIE_NAME,
     value: "",
@@ -19,6 +20,7 @@ export async function POST(req: NextRequest) {
     secure: isSecure,
     sameSite: "lax",
     maxAge: 0,
+    expires: new Date(0),
     path: "/",
   });
 

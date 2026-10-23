@@ -175,7 +175,16 @@ function CheckoutSuccessContent() {
                 <div>Habesha Luxe Couture Private Limited Co.</div>
                 <div>TIN: 0048192841 | VAT Reg: 78923410</div>
                 <div>Bole Sub-City, Woreda 03, Edna Plaza 4th Floor, Addis Ababa</div>
-                <div>Contact: +251 99 816 4025 (0998164025) | getasewshumie@gmail.com</div>
+                <div>
+                  Contact:{" "}
+                  <a href="tel:+251998164025" className="hover:text-gold-400 transition-colors">
+                    +251 99 816 4025 (0998164025)
+                  </a>{" "}
+                  |{" "}
+                  <a href="mailto:getasewshumie@gmail.com" className="hover:text-gold-400 transition-colors">
+                    getasewshumie@gmail.com
+                  </a>
+                </div>
               </div>
             </div>
 

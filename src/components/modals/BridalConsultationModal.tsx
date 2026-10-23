@@ -192,8 +192,26 @@ export function BridalConsultationModal() {
             <div className="bg-obsidian-950 p-4 rounded-xl border border-gold-500/20 text-xs text-left space-y-1.5 max-w-sm mx-auto">
               <div className="text-gold-400 font-semibold">VIP Bridal Concierge:</div>
               <div className="text-zinc-400">Addis Ababa Atelier: Bole Medhanialem, Edna Plaza</div>
-              <div className="text-zinc-400">Direct WhatsApp / Phone: +251 99 816 4025 (0998164025)</div>
-              <div className="text-zinc-400">Official Email: getasewshumie@gmail.com</div>
+              <div className="text-zinc-400">
+                Direct WhatsApp / Phone:{" "}
+                <a
+                  href="https://wa.me/251998164025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors font-medium"
+                >
+                  +251 99 816 4025 (0998164025)
+                </a>
+              </div>
+              <div className="text-zinc-400">
+                Official Email:{" "}
+                <a
+                  href="mailto:getasewshumie@gmail.com"
+                  className="text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors font-medium"
+                >
+                  getasewshumie@gmail.com
+                </a>
+              </div>
             </div>
             <button
               onClick={() => {

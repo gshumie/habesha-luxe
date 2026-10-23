@@ -4,17 +4,17 @@ import { cookies } from "next/headers";
 export const ADMIN_COOKIE_NAME = "hl_admin_session";
 
 function getSecretKey(): string {
-  return (
-    process.env.ADMIN_JWT_SECRET ||
-    process.env.ADMIN_SECRET_KEY ||
-    "habesha_luxe_secret_secure_key_2025"
-  );
+  const envSecret = (process.env.ADMIN_JWT_SECRET || process.env.ADMIN_SECRET_KEY)?.trim();
+  return envSecret && envSecret.length > 0 ? envSecret : "habesha_luxe_secret_secure_key_2025";
 }
 
 export function getAdminCredentials() {
+  const envEmail = process.env.ADMIN_EMAIL?.trim();
+  const envPassword = process.env.ADMIN_PASSWORD?.trim();
+
   return {
-    email: (process.env.ADMIN_EMAIL || "getasewshumie@gmail.com").trim().toLowerCase(),
-    password: process.env.ADMIN_PASSWORD || "SetYourStrongPassword2025!",
+    email: (envEmail && envEmail.length > 0 ? envEmail : "getasewshumie@gmail.com").toLowerCase(),
+    password: envPassword && envPassword.length > 0 ? envPassword : "SetYourStrongPassword2025!",
   };
 }
 

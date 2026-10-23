@@ -41,14 +41,18 @@
 - **Hero Showcase**: Luxury imagery, stats counter (100% Handspun Shema, 160+ hours per gown, Chapa verified).
 - **Dynamic Category Filtering**:
   1. *All Collections*
-  2. *Traditional Kemis (ሀበሻ ቀሚስ)*
-  3. *Modern Tibeb & Ready-to-Wear (ዘመናዊ ጥበብ)*
-  4. *Men's Traditional Attire (የወንዶች ባህላዊ ልብስ)*
-  5. *Handwoven Netela & Accessories (ነጠላ እና መለዋወጫዎች)*
+  2. *Couples & Bridal (የጥንዶች እና የሰርግ)*
+  3. *Traditional Kemis (ሀበሻ ቀሚስ)*
+  4. *Modern Tibeb & Ready-to-Wear (ዘመናዊ ጥበብ)*
+  5. *Men's Traditional Attire (የወንዶች ባህላዊ ልብስ)*
+  6. *Handwoven Netela & Accessories (ነጠላ እና መለዋወጫዎች)*
 - **Instant Search & Multi-Sort**: Search by item name, origin (Dorze, Gondar, Shiro Meda), or Amharic title; sort by Price (Low to High, High to Low), Rating, or Newest.
-- **Pre-populated Authentic Catalog**:
+- **Pre-populated Authentic Catalog (Wedding Season Edition - Up to 55% OFF)**:
+  - **Royal Purple & Gold Star Tilf Habesha Kemis** (24,500 ETB - 50% Off Best Seller)
+  - **Alluring Crimson & Gold Couples Matching Cultural Attire** (34,800 ETB - 35% Off Wedding Collection)
+  - **Modern Chic White Habesha Tunic with Yellow-Gold Embroidery** (14,000 ETB - 55% Off Trending)
+  - **Imperial Royal Sheba Bridal Gala Kemis** (42,000 ETB - Haute Couture Bespoke)
   - Queen Menen Imperial Tibeb Kemis (18,500 ETB)
-  - Royal Sheba Silk Chiffon Kemis (14,200 ETB)
   - Gondar Heritage Tilf Wedding Kemis (22,000 ETB)
   - Classic Hand-Embroidered Bridal Kemis (26,500 ETB)
   - Modern Cut-Out Tibeb Dress (9,800 ETB)
@@ -76,7 +80,7 @@
 1. **Checkout Form**:
    - Captures customer name, phone number, email, delivery zone, Addis Ababa sub-city dropdown (Bole, Kazanchis, Yeka, Sarbet, Old Airport, etc.), and house/landmark number.
 2. **Payment Initialization (Server-Side)**:
-   - Route: `POST /api/payment/initialize`
+   - Routes: `POST /api/payment/chapa/initialize` and `POST /api/payment/initialize`
    - Invokes: `POST https://api.chapa.co/v1/transaction/initialize`
    - Authorization: `Bearer CHAPA_SECRET_KEY`
    - Passes exact parameters: `amount`, `currency: "ETB"`, `tx_ref`, `callback_url`, `return_url`, and custom metadata.
@@ -84,7 +88,7 @@
    - If a live key is present, redirects to Chapa's hosted checkout.
    - For local QA or test keys, seamlessly routes through the integrated **Chapa Sandbox Gateway** (`/checkout/simulate-chapa`) allowing one-click authorization via Telebirr, CBE Birr, Awash Birr, or Card.
 4. **Transaction Verification**:
-   - Route: `GET /api/payment/verify?tx_ref=...`
+   - Routes: `GET /api/payment/chapa/verify?tx_ref=...` and `GET /api/payment/verify?tx_ref=...` (also supports route parameter `/api/payment/chapa/verify/{tx_ref}`)
    - Invokes: `GET https://api.chapa.co/v1/transaction/verify/{tx_ref}`
    - Confirms transaction validity, extracts Chapa transaction ID, payment method, and marks order as `paid`.
 5. **Printable Official Tax Invoice / Receipt**:
@@ -99,7 +103,8 @@
 - Route: `/admin` & `/admin/login`
 - **Secure Email & Password Authentication**:
   - Official Administrator Email: `getasewshumie@gmail.com`
-  - Password with show/hide toggle, Remember Me (30 days), and HMAC-SHA256 encrypted session cookies.
+  - Default Production Fallback Password: `SetYourStrongPassword2025!` (customizable via `ADMIN_PASSWORD` env variable)
+  - Password input with show/hide toggle, Remember Me (30 days), and HMAC-SHA256 encrypted session cookies.
   - Auto-redirect protection: unauthenticated users are redirected to `/admin/login`.
 - Live KPIs: Total Chapa Revenue in ETB, Total Orders, Paid vs. Pending orders.
 - Search & filter by customer, phone, or `tx_ref`.

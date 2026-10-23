@@ -519,6 +519,33 @@ export default function CheckoutPage() {
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>Redirecting to Chapa&apos;s PCI-DSS compliant checkout portal</span>
               </div>
+
+              {/* Concierge Assistance */}
+              <div className="p-4 rounded-xl bg-obsidian-950/80 border border-gold-500/20 text-xs text-zinc-400 space-y-1.5">
+                <div className="font-semibold text-gold-400 flex items-center space-x-1.5">
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Direct Atelier Concierge Support:</span>
+                </div>
+                <div className="text-[11px] leading-relaxed">
+                  Need assistance with Telebirr, CBE Birr or custom sizing? Call or WhatsApp us at{" "}
+                  <a
+                    href="https://wa.me/251998164025"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold-400 hover:underline font-semibold"
+                  >
+                    0998164025 (+251998164025)
+                  </a>{" "}
+                  or email{" "}
+                  <a
+                    href="mailto:getasewshumie@gmail.com"
+                    className="text-gold-400 hover:underline font-semibold"
+                  >
+                    getasewshumie@gmail.com
+                  </a>
+                  .
+                </div>
+              </div>
             </div>
           </div>
         </div>

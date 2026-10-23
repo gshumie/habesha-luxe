@@ -51,6 +51,7 @@ export async function POST(req: NextRequest) {
       txRef,
       customTitle: "Habesha Luxe Order",
       customDescription: `Payment for ${items.length} Ethiopian traditional couture pieces`,
+      baseUrl: req.nextUrl.origin,
       meta: {
         orderId,
         deliveryZone: customer.deliveryZone,
