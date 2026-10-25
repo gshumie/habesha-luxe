@@ -99,7 +99,7 @@ export function HeroSection() {
           {/* Central Featured Image Card */}
           <div className="relative w-full max-w-[360px] sm:max-w-[400px] aspect-[3/4] rounded-2xl overflow-hidden border-2 border-gold-500/40 shadow-2xl shadow-gold-500/15 group">
             <Image
-              src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85"
+              src="/images/hero-bridal.jpg?v=20261025"
               alt="Haute Couture Ethiopian Bridal Kemis with Traditional Gold Jewelry"
               fill
               priority
