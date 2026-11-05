@@ -99,19 +99,20 @@ const INITIAL_ORDERS: Order[] = [
   },
   {
     id: "ord-hl-802",
-    txRef: "HL-LZ7721-M8X1",
-    chapaTransactionId: "CHAPA-CBE-771904",
+    txRef: "HL-MB4419-X8P1",
+    chapaTransactionId: "CHAPA-ET-771902",
     customer: {
-      firstName: "Tewodros",
-      lastName: "Kassahun",
-      email: "tewodros.k@gmail.com",
-      phoneNumber: "0923889900",
+      firstName: "Dawit",
+      lastName: "Hailemariam",
+      email: "dawit.haile@telecom.et",
+      phoneNumber: "0922891234",
       city: "Addis Ababa",
-      subCity: "Kirkos / Kazanchis (ቂርቆስ / ካዛንቺስ)",
+      subCity: "Kazanchis (ካዛንቺስ)",
       woreda: "Woreda 08",
-      houseNumber: "Apt 4B, UNECA Residences",
+      houseNumber: "Apt 4B, Sunshine Luxury Apts",
+      specificAddress: "Opposite Intercontinental Hotel",
       deliveryZone: "addis-ababa",
-      deliveryNotes: "Ring apartment bell 4B.",
+      deliveryNotes: "Call when at main gate.",
     },
     items: [
       {
@@ -124,17 +125,17 @@ const INITIAL_ORDERS: Order[] = [
           priceETB: 8900,
           rating: 4.89,
           reviewCount: 19,
-          shortDescription: "Tailored ivory linen shirt & gabi.",
+          shortDescription: "Tailored ivory linen shirt with Gabi.",
           description: "",
-          fabricDetails: "Flax linen & cotton buluuk",
-          craftsmanship: "Embroidered collar",
+          fabricDetails: "Highland linen and buluuk",
+          craftsmanship: "Mother of pearl buttons",
           images: [
             "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=80",
           ],
           availableSizes: ["L"],
           inStock: true,
           stockCount: 10,
-          tags: ["Men's"],
+          tags: ["Men"],
           origin: "Wollo",
         },
         selectedSize: "L",
@@ -146,57 +147,116 @@ const INITIAL_ORDERS: Order[] = [
     grandTotalETB: 8900,
     currency: "ETB",
     paymentStatus: "paid",
-    dispatchStatus: "out_for_delivery",
-    paymentMethod: "CBE Birr (Chapa)",
-    paymentReference: "CHAPA-CBE-771904",
+    dispatchStatus: "shipped",
+    paymentMethod: "CBE Birr (Chapa Direct)",
+    paymentReference: "CHAPA-CBE-771902",
+    courierName: "Bole VIP Express (ቦሌ ቪአይፒ ፈጣን ፖስታ)",
+    trackingCode: "BVP-ET-8912",
     createdAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
     paidAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
+    shippedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
   },
   {
     id: "ord-hl-803",
-    txRef: "HL-LZ6610-P4A9",
-    chapaTransactionId: "CHAPA-AWB-660123",
+    txRef: "HL-TG9021-V3W4",
     customer: {
-      firstName: "Helen",
-      lastName: "Berhanu",
-      email: "helen.berhanu@diaspora.org",
-      phoneNumber: "+12025550199",
-      city: "Silver Spring, MD (USA)",
-      specificAddress: "8401 Colesville Rd, Suite 300",
-      deliveryZone: "international",
-      deliveryNotes: "DHL Express international courier delivery.",
+      firstName: "Tigist",
+      lastName: "Moges",
+      email: "tigist.moges@yahoo.com",
+      phoneNumber: "0933567890",
+      city: "Hawassa",
+      subCity: "Tabor Subcity",
+      woreda: "Woreda 02",
+      houseNumber: "Villa 12",
+      specificAddress: "Near Haile Resort & Lake View Avenue",
+      deliveryZone: "regional-ethiopia",
+      deliveryNotes: "Call 30 mins before arrival in Hawassa.",
     },
     items: [
       {
         id: "item-4",
         product: {
-          id: "hl-prod-001",
-          slug: "queen-menen-imperial-tibeb-kemis",
-          name: "Queen Menen Imperial Tibeb Kemis",
-          category: "traditional-kemis",
-          priceETB: 18500,
-          rating: 4.95,
-          reviewCount: 38,
-          shortDescription: "Regal two-piece kemis woven with pure Dorze cotton.",
+          id: "hl-prod-002",
+          slug: "modern-azure-silk-chiffon-kemis",
+          name: "Modern Azure Silk-Chiffon Kemis",
+          category: "modern-tibeb",
+          priceETB: 16000,
+          rating: 4.91,
+          reviewCount: 29,
+          shortDescription: "Contemporary loose-cut silk-chiffon dress.",
           description: "",
-          fabricDetails: "Highland cotton",
-          craftsmanship: "Dorze handloom",
+          fabricDetails: "Silk chiffon blend",
+          craftsmanship: "Contemporary cut",
           images: [
-            "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=1000&q=80",
           ],
           availableSizes: ["M"],
           inStock: true,
-          stockCount: 6,
-          tags: ["Kemis"],
-          origin: "Dorze Highlands",
+          stockCount: 12,
+          tags: ["Modern"],
+          origin: "Kazanchis",
         },
         selectedSize: "M",
         quantity: 1,
       },
     ],
-    subtotalETB: 18500,
-    deliveryFeeETB: 3500,
-    grandTotalETB: 22000,
+    subtotalETB: 16000,
+    deliveryFeeETB: 500,
+    grandTotalETB: 16500,
+    currency: "ETB",
+    paymentStatus: "pending",
+    dispatchStatus: "processing",
+    paymentMethod: "Awaiting Chapa Confirmation",
+    createdAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: "ord-hl-800",
+    txRef: "HL-KM1102-R5T9",
+    chapaTransactionId: "CHAPA-ET-660123",
+    customer: {
+      firstName: "Eden",
+      lastName: "Tilahun",
+      email: "eden.tilahun@gmail.com",
+      phoneNumber: "0944123456",
+      city: "Addis Ababa",
+      subCity: "Old Airport (የድሮ አውሮፕላን ማረፊያ)",
+      woreda: "Woreda 04",
+      houseNumber: "House 204",
+      specificAddress: "Near ICS American School",
+      deliveryZone: "addis-ababa",
+      deliveryNotes: "Delivered to house security directly.",
+    },
+    items: [
+      {
+        id: "item-5",
+        product: {
+          id: "hl-prod-009",
+          slug: "ethiopian-highland-calfskin-handbag",
+          name: "Ethiopian Highland Calfskin Handbag",
+          category: "accessories",
+          priceETB: 7500,
+          rating: 4.87,
+          reviewCount: 16,
+          shortDescription: "Full-grain calfskin with antique brass.",
+          description: "",
+          fabricDetails: "Vegetable tanned leather",
+          craftsmanship: "Hand-stitched",
+          images: [
+            "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=80",
+          ],
+          availableSizes: ["Standard"],
+          inStock: true,
+          stockCount: 8,
+          tags: ["Leather"],
+          origin: "Merkato",
+        },
+        selectedSize: "Standard",
+        quantity: 1,
+      },
+    ],
+    subtotalETB: 7500,
+    deliveryFeeETB: 0,
+    grandTotalETB: 7500,
     currency: "ETB",
     paymentStatus: "paid",
     dispatchStatus: "delivered",
@@ -209,6 +269,8 @@ const INITIAL_ORDERS: Order[] = [
 ];
 
 class OrderStore {
+  private inMemoryOrders: Order[] = [...INITIAL_ORDERS];
+
   private ensureFile() {
     try {
       if (!fs.existsSync(DATA_DIR)) {
@@ -218,7 +280,8 @@ class OrderStore {
         fs.writeFileSync(ORDERS_FILE, JSON.stringify(INITIAL_ORDERS, null, 2), "utf-8");
       }
     } catch (err) {
-      console.warn("OrderStore file initialization warning:", err);
+      // In serverless / read-only environment, silently use in-memory store
+      console.warn("OrderStore file initialization notice (using memory fallback):", err);
     }
   }
 
@@ -227,12 +290,16 @@ class OrderStore {
     try {
       if (fs.existsSync(ORDERS_FILE)) {
         const raw = fs.readFileSync(ORDERS_FILE, "utf-8");
-        return JSON.parse(raw);
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          this.inMemoryOrders = parsed;
+          return parsed;
+        }
       }
     } catch (err) {
-      console.error("Error reading orders file:", err);
+      console.warn("Error reading orders file, using in-memory store:", err);
     }
-    return INITIAL_ORDERS;
+    return this.inMemoryOrders;
   }
 
   public getByTxRef(txRef: string): Order | undefined {
@@ -256,10 +323,12 @@ class OrderStore {
       orders.unshift(order);
     }
 
+    this.inMemoryOrders = orders;
+
     try {
       fs.writeFileSync(ORDERS_FILE, JSON.stringify(orders, null, 2), "utf-8");
     } catch (err) {
-      console.error("Error saving orders file:", err);
+      console.warn("Error saving orders file, stored in memory:", err);
     }
 
     return order;

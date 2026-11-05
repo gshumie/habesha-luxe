@@ -19,7 +19,7 @@ export const PRODUCTS: Product[] = [
     fabricDetails: "100% Organic handspun Ethiopian highland cotton (Shema) accented with metallic 24k-gold dipped thread and royal purple silk.",
     craftsmanship: "Authentic Dorze pedal-loom weave with 140+ hours of hand-embroidery (ኮከብ ጥልፍ).",
     images: [
-      "/images/products/royal-purple-gold-star-tilf.jpg?v=20261025",
+      "/images/products/royal-purple-gold-star-tilf.jpg",
       "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=1200&q=85",
     ],
@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
     fabricDetails: "Her Gown: Multi-layered organic Shema cotton with golden bullion lace. His Shirt & Gabi: Pure breathable Ethiopian flax linen and 4-ply cotton buluuk.",
     craftsmanship: "Jointly hand-tailored by master Shemane artisans in Addis Ababa with over 200 hours of synchronized cross-stitch embroidery.",
     images: [
-      "/images/products/crimson-gold-couples.jpg?v=20261025",
+      "/images/products/crimson-gold-couples.jpg",
       "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85",
     ],
@@ -74,7 +74,7 @@ export const PRODUCTS: Product[] = [
     fabricDetails: "Featherlight crinkled Shemane chiffon-cotton blend with hand-dyed turmeric and golden yarn embroidery.",
     craftsmanship: "Contemporary loose caftan cut with delicate rolled hems and reinforced side slits.",
     images: [
-      "/images/products/modern-white-yellow-gold-tunic.jpg?v=20261025",
+      "/images/products/modern-white-yellow-gold-tunic.jpg",
       "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=1200&q=85",
     ],
@@ -101,8 +101,8 @@ export const PRODUCTS: Product[] = [
     fabricDetails: "Triple-bleached Addis Ababa mountain-spring Shemane cotton, hand-stitched seed pearls, and Austrian gold crystals.",
     craftsmanship: "Custom bespoke creation requiring 220+ hours of master embroidery and individual silhouette sculpting.",
     images: [
-      "/images/products/royal-sheba-bridal-gala.jpg?v=20261025",
-      "/images/hero-bridal.jpg?v=20261025",
+      "/images/products/royal-sheba-bridal-gala.jpg",
+      "/images/hero-bridal.jpg",
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85",
     ],
     availableSizes: ["Custom Tailored", "Custom Fit"],

@@ -8,7 +8,7 @@ export interface CartItem {
   quantity: number;
 }
 
-export type DeliveryZone = "addis-ababa" | "ethiopia-regions" | "international";
+export type DeliveryZone = "addis-ababa" | "ethiopia-regions" | "regional-ethiopia" | "international";
 
 export interface DeliveryOption {
   id: DeliveryZone;

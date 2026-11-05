@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://habesha-luxe.vercel.app")
   ),
   title: "Habesha Luxe | Royal Ethiopian Couture & Modern Tibeb Fashion",
   description:
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/hero-bridal.jpg?v=20261025",
+        url: "/images/hero-bridal.jpg",
         width: 1200,
         height: 630,
         alt: "Habesha Luxe Haute Couture",

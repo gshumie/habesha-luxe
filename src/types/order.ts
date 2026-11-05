@@ -1,7 +1,7 @@
 import { CartItem, DeliveryZone } from "./cart";
 
 export type PaymentStatus = "pending" | "paid" | "failed" | "refunded";
-export type DispatchStatus = "processing" | "tailoring" | "out_for_delivery" | "delivered" | "cancelled";
+export type DispatchStatus = "processing" | "tailoring" | "shipped" | "out_for_delivery" | "delivered" | "cancelled";
 
 export interface CustomerDetails {
   firstName: string;
@@ -35,6 +35,9 @@ export interface Order {
   createdAt: string;
   paidAt?: string;
   deliveredAt?: string;
+  courierName?: string;
+  trackingCode?: string;
+  shippedAt?: string;
 }
 
 export interface ChapaInitializePayload {
@@ -49,8 +52,7 @@ export interface ChapaInitializePayload {
   return_url: string;
   "customization[title]"?: string;
   "customization[description]"?: string;
-  "customization[logo]"?: string;
-  meta?: Record<string, string | number>;
+  meta?: any;
 }
 
 export interface ChapaInitializeResponse {
@@ -69,7 +71,7 @@ export interface ChapaVerifyResponse {
     last_name: string;
     email: string;
     currency: string;
-    amount: number | string;
+    amount: number;
     charge: number;
     mode: string;
     method: string;
@@ -81,7 +83,7 @@ export interface ChapaVerifyResponse {
       title?: string;
       description?: string;
     };
-    meta?: Record<string, any>;
+    meta?: any;
     created_at: string;
     updated_at: string;
   };
