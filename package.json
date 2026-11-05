@@ -1,6 +1,7 @@
 {
   "name": "habesha-luxe",
   "version": "1.0.0",
+  "description": "Habesha Luxe — Premier Ethiopian Haute Couture, Bespoke Habesha Kemis, Wedding & Melse Attire, and Modern Tibeb Fashion handcrafted by master Shemane artisans with Chapa Payment Gateway integration.",
   "private": true,
   "scripts": {
     "dev": "next dev",

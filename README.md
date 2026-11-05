@@ -7,7 +7,9 @@
 [![Chapa](https://img.shields.io/badge/Payment-Chapa_API_v1-00875A?style=for-the-badge)](https://chapa.co)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-**Habesha Luxe** is a production-ready, fully responsive e-commerce web platform for authentic Ethiopian traditional and modern clothing (Habesha Kemis, Modern Tibeb fashion, Men's Imperial linen attire, and handspun Netela accessories) integrated directly with Ethiopia's leading payment gateway, **Chapa** (supporting **Telebirr**, **CBE Birr**, **Awash Birr**, and **Visa / Mastercard**).
+**Habesha Luxe (የኢትዮጵያ ንጉሣዊ ልብስ)** curates 3,000 years of Ethiopian royal textile heritage into contemporary high-fashion haute couture. Handcrafted in our Addis Ababa master atelier from pure organic handspun Shema cotton (ፈትል), 24k gold bullion tilf embroidery (ጥልፍ), and generational Dorze and Chencha pedal-loom artistry, Habesha Luxe designs made-to-measure bridal gowns, ceremonial couples attire for Serg and Melse, and modern runway Tibeb for discerning clients worldwide. Seamlessly integrated with Ethiopia's leading payment gateway, **Chapa** (supporting **Telebirr**, **CBE Birr**, **Awash Birr**, and **Visa / Mastercard**).
+
+> *"We do not merely tailor fabric; we weave three millennia of sovereign African dignity, spiritual symbolism, and artisan soul into wearable heirlooms."*
 
 ### 📞 Official Store Contact Information
 - **Store Email**: [getasewshumie@gmail.com](mailto:getasewshumie@gmail.com)

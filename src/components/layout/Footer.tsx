@@ -37,9 +37,10 @@ export function Footer() {
             </Link>
 
             <p className="text-xs text-zinc-400 max-w-sm leading-relaxed">
-              Curating 3,000 years of Ethiopian textile mastery into high-fashion couture. 
-              Handcrafted in Addis Ababa with pure organic Shema cotton and regal gold tilf embroidery. 
-              Integrated with Chapa payment gateway for effortless local & international checkout.
+              Curating 3,000 years of Ethiopian royal textile heritage into contemporary haute couture. 
+              Handcrafted in our Addis Ababa atelier from pure organic handspun Shema cotton, 
+              24k gold bullion tilf embroidery, and generational Dorze pedal-loom artistry. 
+              Seamlessly integrated with Chapa for secure Telebirr, CBE Birr, and international payments.
             </p>
 
             <div className="space-y-2 text-xs">
@@ -107,6 +108,11 @@ export function Footer() {
               Services & Craft
             </h4>
             <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/#about-habesha-luxe" className="hover:text-gold-400 transition-colors">
+                  About Maison Habesha Luxe
+                </Link>
+              </li>
               <li>
                 <span className="text-ivory-200">Bridal Melse Concierge</span>
               </li>

@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { CategoryFilter } from "@/components/home/CategoryFilter";
 import { ProductCard } from "@/components/home/ProductCard";
 import { ShemaneHeritage } from "@/components/home/ShemaneHeritage";
+import { BrandStorySection } from "@/components/home/BrandStorySection";
 import { BridalBanner } from "@/components/home/BridalBanner";
 import { Testimonials } from "@/components/home/Testimonials";
 import { PRODUCTS } from "@/lib/data/products";
@@ -100,13 +101,16 @@ export default function HomePage() {
       {/* 3. Shemane Artisan Heritage Story */}
       <ShemaneHeritage />
 
-      {/* 4. Bridal Banner & Consultation */}
+      {/* 4. Maison Brand Description & Heritage Story */}
+      <BrandStorySection />
+
+      {/* 5. Bridal Banner & Consultation */}
       <BridalBanner />
 
-      {/* 5. Diaspora & Local Testimonials */}
+      {/* 6. Diaspora & Local Testimonials */}
       <Testimonials />
 
-      {/* 6. Luxury Guarantees Banner */}
+      {/* 7. Luxury Guarantees Banner */}
       <section className="border-t border-gold-500/20 bg-obsidian-900/60 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center sm:text-left">
           <div className="flex items-start space-x-3.5">

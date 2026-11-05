@@ -148,6 +148,15 @@ export function Navbar() {
               Men&apos;s Attire
             </button>
             <button
+              onClick={() => {
+                const el = document.getElementById("about-habesha-luxe");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-sm tracking-wide font-medium transition-colors hover:text-gold-400 text-ivory-200/90"
+            >
+              Our Story
+            </button>
+            <button
               onClick={openBridalModal}
               className="group flex items-center space-x-1.5 text-sm tracking-wide font-medium text-gold-300 hover:text-gold-200"
             >
@@ -265,6 +274,15 @@ export function Navbar() {
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
               Handwoven Netela & Accessories
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                document.getElementById("about-habesha-luxe")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
+            >
+              About Maison Habesha Luxe (Our Story)
             </button>
             <button
               onClick={() => {
