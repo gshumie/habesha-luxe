@@ -31,7 +31,7 @@ export function HeroSection() {
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-crimsonGlow to-obsidian-850 border border-gold-500/40 backdrop-blur-sm shadow-md animate-in fade-in duration-500">
             <Sparkles className="w-4 h-4 text-gold-400 animate-spin-slow" />
             <span className="text-xs uppercase tracking-[0.25em] text-gold-300 font-bold">
-              💍 Wedding Season Exclusive • የሰርግ ወቅት ልዩ ቅናሽ
+              💍 Atiye Ethiopia (አትዬ ኢትዮጵያ) • Wedding Season Exclusive
             </span>
           </div>
 
@@ -50,8 +50,8 @@ export function HeroSection() {
 
           {/* Subtitle Description */}
           <p className="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-            Celebrate your Serg, Melse, and ceremonial festivities in authentic Ethiopian grandeur. 
-            Featuring our newly unveiled Royal Purple & Gold Star Tilf, Crimson Couples Sets, and Modern Yellow-Gold Tunics handspun by master Shemane artisans.
+            Celebrate your Serg, Melse, and ceremonial festivities in authentic Ethiopian grandeur with Atiye Ethiopia (አትዬ ኢትዮጵያ). 
+            Featuring our newly curated 6 traditional collections—from Tibeb Heritage and Royal Leather Crafts to Negestat Bridal and Atiye Signature Couture, handspun by master Shemane artisans.
           </p>
 
           {/* Call-to-Action Buttons */}

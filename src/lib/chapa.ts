@@ -37,7 +37,7 @@ export class ChapaService {
    * Initializes a payment session with Chapa.
    * If real key is provided, makes real HTTPS request to Chapa API.
    * If simulated or if real API returns error due to dummy test credentials,
-   * seamlessly falls back to the Habesha Luxe Chapa Sandbox Gateway.
+   * seamlessly falls back to the Atiye Ethiopia Chapa Sandbox Gateway.
    */
   public async initializePayment(
     params: {
@@ -67,9 +67,9 @@ export class ChapaService {
       tx_ref: params.txRef,
       callback_url: callbackUrl,
       return_url: returnUrl,
-      "customization[title]": params.customTitle || "Habesha Luxe Order",
+      "customization[title]": params.customTitle || "Atiye Ethiopia Order",
       "customization[description]":
-        params.customDescription || "Payment for Ethiopian Traditional Attire & Couture",
+        params.customDescription || "Payment for Atiye Ethiopia Traditional Attire & Couture",
       meta: params.meta,
     };
 
@@ -166,7 +166,7 @@ export class ChapaService {
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       },
-      message: "Payment verified successfully (Habesha Luxe Secure Gateway)",
+      message: "Payment verified successfully (Atiye Ethiopia Secure Gateway)",
     };
   }
 }

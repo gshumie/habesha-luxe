@@ -14,7 +14,7 @@ export function Testimonials() {
     },
     {
       quote:
-        "Living in Silver Spring, Maryland, finding authentic handwoven Gondar Tilf of this caliber was impossible until Habesha Luxe. The made-to-measure custom measurements fit me like a glove!",
+        "Living in Silver Spring, Maryland, finding authentic handwoven Gondar Tilf of this caliber was impossible until Atiye Ethiopia. The made-to-measure custom measurements fit me like a glove!",
       author: "Meron Woldegiorgis",
       title: "Diaspora Cultural Curator",
       location: "Washington, D.C., USA",

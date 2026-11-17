@@ -119,7 +119,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: "habesha-luxe-cart-storage",
+      name: "atiye-ethiopia-cart-storage",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         items: state.items,

@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
     const response = NextResponse.json({
       success: true,
       email: authenticatedEmail,
-      message: "Authentication successful. Welcome to Habesha Luxe Admin Portal.",
+      message: "Authentication successful. Welcome to Atiye Ethiopia (አትዬ ኢትዮጵያ) Admin Portal.",
     });
 
     // Set secure HTTP-only cookie (only require secure flag if https or not localhost)

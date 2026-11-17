@@ -165,14 +165,14 @@ function CheckoutSuccessContent() {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-2xl sm:text-3xl font-serif font-black tracking-[0.2em] text-gold-400">
-                  HABESHA LUXE
+                  ATIYE ETHIOPIA
                 </span>
               </div>
               <p className="text-xs text-gold-400/90 uppercase tracking-widest font-serif mt-0.5">
-                የኢትዮጵያ ንጉሣዊ ልብስ • Official Tax Invoice
+                አትዬ ኢትዮጵያ • Official Tax Invoice
               </p>
               <div className="text-[11px] text-zinc-400 mt-2 space-y-0.5">
-                <div>Habesha Luxe Couture Private Limited Co.</div>
+                <div>Atiye Ethiopia Couture Private Limited Co.</div>
                 <div>TIN: 0048192841 | VAT Reg: 78923410</div>
                 <div>Bole Sub-City, Woreda 03, Edna Plaza 4th Floor, Addis Ababa</div>
                 <div>
@@ -338,7 +338,7 @@ function CheckoutSuccessContent() {
           {/* Official Bottom Stamp */}
           <div className="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center text-[10px] text-zinc-500 gap-2">
             <div>This is a computer-generated tax invoice verified by the Chapa Payment API.</div>
-            <div className="text-gold-400/80 font-serif">Habesha Luxe • Authentic Ethiopian Couture</div>
+            <div className="text-gold-400/80 font-serif">Atiye Ethiopia (አትዬ ኢትዮጵያ) • Authentic Ethiopian Couture</div>
           </div>
         </div>
       </div>

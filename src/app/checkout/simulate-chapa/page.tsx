@@ -61,7 +61,7 @@ function ChapaSimulatorContent() {
             <div className="text-[11px] text-slate-500 uppercase tracking-wider font-semibold">
               Paying Merchant
             </div>
-            <div className="text-sm font-bold text-slate-800">Habesha Luxe Couture</div>
+            <div className="text-sm font-bold text-slate-800">Atiye Ethiopia (አትዬ ኢትዮጵያ) Couture</div>
             <div className="text-[11px] text-slate-500">{name} ({email})</div>
           </div>
           <div className="text-right">

@@ -67,7 +67,7 @@ export function ShemaneHeritage() {
                 Woven from the Soul of Ancient Ethiopia
               </h2>
               <p className="text-sm text-zinc-300 leading-relaxed">
-                Before mass production and synthetic fast-fashion existed, Ethiopian Shemane artisans were already weaving world-renowned cotton garments for royal courts of Aksum and Gondar. Habesha Luxe preserves this unbroken lineage, celebrating the human hand behind every stitch.
+                Before mass production and synthetic fast-fashion existed, Ethiopian Shemane artisans were already weaving world-renowned cotton garments for royal courts of Aksum and Gondar. Atiye Ethiopia (አትዬ ኢትዮጵያ) preserves this unbroken lineage, celebrating the human hand behind every stitch.
               </p>
             </div>
 

@@ -1,10 +1,11 @@
 export type ProductCategory =
   | "all"
-  | "traditional-kemis"
-  | "couples-bridal"
-  | "modern-tibeb"
-  | "mens-attire"
-  | "accessories";
+  | "tibeb-heritage"
+  | "royal-leather-belt"
+  | "everyday-tibeb"
+  | "mekwanint-mens-attire"
+  | "negestat-royal-bridal"
+  | "atiye-signature-couture";
 
 export type ProductSize = string;
 

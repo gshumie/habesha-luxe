@@ -49,8 +49,8 @@ export async function POST(req: NextRequest) {
       lastName: customer.lastName || "",
       phoneNumber: customer.phoneNumber,
       txRef,
-      customTitle: "Habesha Luxe Order",
-      customDescription: `Payment for ${items.length} Ethiopian traditional couture pieces`,
+      customTitle: "Atiye Ethiopia Order",
+      customDescription: `Payment for ${items.length} Atiye Ethiopia traditional couture pieces`,
       baseUrl: req.nextUrl.origin,
       meta: {
         orderId,

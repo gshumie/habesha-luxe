@@ -87,11 +87,11 @@ export function Navbar() {
             <Link href="/" className="group flex flex-col items-center md:items-start">
               <div className="flex items-center space-x-2">
                 <span className="text-2xl sm:text-3xl font-serif font-black tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-ivory-100 via-gold-300 to-gold-500">
-                  HABESHA LUXE
+                  ATIYE ETHIOPIA
                 </span>
               </div>
-              <div className="flex items-center space-x-1.5 text-[9px] uppercase tracking-[0.35em] text-gold-400/90 font-medium">
-                <span>የኢትዮጵያ ንጉሣዊ ልብስ</span>
+              <div className="flex items-center space-x-1.5 text-[10px] uppercase tracking-[0.35em] text-gold-400/90 font-medium">
+                <span>አትዬ ኢትዮጵያ</span>
                 <span>•</span>
                 <span>Haute Couture</span>
               </div>
@@ -99,69 +99,105 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-7">
+          <nav className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
               onClick={() => setSelectedCategory("all")}
-              className={`text-sm tracking-wide font-medium transition-colors hover:text-gold-400 ${
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
                 pathname === "/" && selectedCategory === "all"
-                  ? "text-gold-400 font-semibold border-b-2 border-gold-400 pb-1"
+                  ? "text-gold-400 font-bold border-b-2 border-gold-400 pb-1"
                   : "text-ivory-200/90"
               }`}
             >
-              All Collections
+              All
             </Link>
             <button
               onClick={() => {
-                setSelectedCategory("traditional-kemis");
+                setSelectedCategory("tibeb-heritage");
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`text-sm tracking-wide font-medium transition-colors hover:text-gold-400 ${
-                selectedCategory === "traditional-kemis" ? "text-gold-400 font-semibold" : "text-ivory-200/90"
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "tibeb-heritage" ? "text-gold-400 font-bold" : "text-ivory-200/90"
               }`}
             >
-              Habesha Kemis
+              Tibeb Heritage
             </button>
             <button
               onClick={() => {
-                setSelectedCategory("modern-tibeb");
+                setSelectedCategory("negestat-royal-bridal");
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`text-sm tracking-wide font-medium transition-colors hover:text-gold-400 ${
-                selectedCategory === "modern-tibeb" ? "text-gold-400 font-semibold" : "text-ivory-200/90"
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "negestat-royal-bridal" ? "text-gold-400 font-bold" : "text-ivory-200/90"
               }`}
             >
-              Modern Tibeb
+              Royal Bridal
             </button>
             <button
               onClick={() => {
-                setSelectedCategory("mens-attire");
+                setSelectedCategory("atiye-signature-couture");
                 const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`text-sm tracking-wide font-medium transition-colors hover:text-gold-400 ${
-                selectedCategory === "mens-attire" ? "text-gold-400 font-semibold" : "text-ivory-200/90"
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "atiye-signature-couture" ? "text-gold-400 font-bold" : "text-ivory-200/90"
               }`}
             >
-              Men&apos;s Attire
+              Signature Couture
             </button>
             <button
               onClick={() => {
-                const el = document.getElementById("about-habesha-luxe");
+                setSelectedCategory("everyday-tibeb");
+                const el = document.getElementById("catalog-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="text-sm tracking-wide font-medium transition-colors hover:text-gold-400 text-ivory-200/90"
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "everyday-tibeb" ? "text-gold-400 font-bold" : "text-ivory-200/90"
+              }`}
+            >
+              Everyday Tibeb
+            </button>
+            <button
+              onClick={() => {
+                setSelectedCategory("mekwanint-mens-attire");
+                const el = document.getElementById("catalog-section");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "mekwanint-mens-attire" ? "text-gold-400 font-bold" : "text-ivory-200/90"
+              }`}
+            >
+              Mekwanint Men
+            </button>
+            <button
+              onClick={() => {
+                setSelectedCategory("royal-leather-belt");
+                const el = document.getElementById("catalog-section");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className={`text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 ${
+                selectedCategory === "royal-leather-belt" ? "text-gold-400 font-bold" : "text-ivory-200/90"
+              }`}
+            >
+              Leather & Belts
+            </button>
+            <button
+              onClick={() => {
+                const el = document.getElementById("about-atiye-ethiopia");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="text-xs tracking-wider uppercase font-semibold transition-colors hover:text-gold-400 text-ivory-200/90"
             >
               Our Story
             </button>
             <button
               onClick={openBridalModal}
-              className="group flex items-center space-x-1.5 text-sm tracking-wide font-medium text-gold-300 hover:text-gold-200"
+              className="group flex items-center space-x-1.5 text-xs tracking-wider uppercase font-bold text-gold-300 hover:text-gold-200"
             >
               <Sparkles className="w-3.5 h-3.5 text-gold-400 group-hover:rotate-12 transition-transform" />
-              <span>Bridal Couture</span>
+              <span>Bespoke</span>
             </button>
           </nav>
 
@@ -237,52 +273,72 @@ export function Navbar() {
             </Link>
             <button
               onClick={() => {
-                setSelectedCategory("traditional-kemis");
+                setSelectedCategory("tibeb-heritage");
                 setMobileMenuOpen(false);
                 document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
-              Traditional Habesha Kemis
+              Tibeb Heritage (የጥበብ ቅርስ)
             </button>
             <button
               onClick={() => {
-                setSelectedCategory("modern-tibeb");
+                setSelectedCategory("negestat-royal-bridal");
                 setMobileMenuOpen(false);
                 document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
-              Modern Tibeb & Ready-to-Wear
+              Negestat Royal Bridal (የነገሥታት እና የሰርግ ክብር)
             </button>
             <button
               onClick={() => {
-                setSelectedCategory("mens-attire");
+                setSelectedCategory("atiye-signature-couture");
                 setMobileMenuOpen(false);
                 document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
-              Men&apos;s Traditional Attire
+              Atiye Signature Couture (የአትዬ ልዩ ድምቀት)
             </button>
             <button
               onClick={() => {
-                setSelectedCategory("accessories");
+                setSelectedCategory("everyday-tibeb");
                 setMobileMenuOpen(false);
                 document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
-              Handwoven Netela & Accessories
+              Everyday Tibeb (የዕለት ተዕለት ጥበብ)
+            </button>
+            <button
+              onClick={() => {
+                setSelectedCategory("mekwanint-mens-attire");
+                setMobileMenuOpen(false);
+                document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
+            >
+              Mekwanint Men&apos;s Attire (የመኳንንት ጥበብ)
+            </button>
+            <button
+              onClick={() => {
+                setSelectedCategory("royal-leather-belt");
+                setMobileMenuOpen(false);
+                document.getElementById("catalog-section")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
+            >
+              Royal Leather & Belt Craft (የቆዳ እና የመቀነት ጥበብ)
             </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                document.getElementById("about-habesha-luxe")?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("about-atiye-ethiopia")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="block w-full text-left px-3 py-2 text-base font-medium text-ivory-100 hover:text-gold-400 rounded-md"
             >
-              About Maison Habesha Luxe (Our Story)
+              About Atiye Ethiopia (አትዬ ኢትዮጵያ • Our Story)
             </button>
             <button
               onClick={() => {

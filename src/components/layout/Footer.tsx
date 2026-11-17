@@ -29,10 +29,10 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block">
               <span className="text-2xl font-serif font-black tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-ivory-100 via-gold-300 to-gold-500">
-                HABESHA LUXE
+                ATIYE ETHIOPIA
               </span>
               <div className="text-[10px] uppercase tracking-[0.3em] text-gold-400 font-medium mt-0.5">
-                የኢትዮጵያ ንጉሣዊ ልብስ • Haute Couture
+                አትዬ ኢትዮጵያ • Haute Couture
               </div>
             </Link>
 
@@ -66,37 +66,37 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-3">
             <h4 className="font-serif font-bold text-sm text-ivory-100 uppercase tracking-wider">
-              Haute Collections
+              Traditional Collections
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors">
-                  Traditional Kemis (የባህል ቀሚስ)
+                  Tibeb Heritage (የጥበብ ቅርስ)
                 </Link>
               </li>
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors">
-                  Modern Tibeb & Evening Gowns
+                  Royal Leather & Belt (የቆዳ እና መቀነት)
                 </Link>
               </li>
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors">
-                  Men&apos;s Attire & Imperial Gabi
+                  Everyday Tibeb (የዕለት ተዕለት ጥበብ)
                 </Link>
               </li>
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors">
-                  Handspun Netela & Shawls
+                  Mekwanint Men (የመኳንንት ጥበብ)
                 </Link>
               </li>
               <li>
                 <Link href="/" className="hover:text-gold-400 transition-colors">
-                  Highland Calfskin Bags
+                  Negestat Royal Bridal (የነገሥታት ክብር)
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="text-gold-400 hover:underline">
-                  Admin Order Dashboard
+                <Link href="/" className="hover:text-gold-400 transition-colors">
+                  Atiye Signature (የአትዬ ልዩ ድምቀት)
                 </Link>
               </li>
             </ul>
@@ -109,8 +109,8 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/#about-habesha-luxe" className="hover:text-gold-400 transition-colors">
-                  About Maison Habesha Luxe
+                <Link href="/#about-atiye-ethiopia" className="hover:text-gold-400 transition-colors">
+                  About Atiye Ethiopia (Our Story)
                 </Link>
               </li>
               <li>
@@ -130,6 +130,11 @@ export function Footer() {
               </li>
               <li>
                 <span className="text-ivory-200">Chapa Merchant Verification</span>
+              </li>
+              <li>
+                <Link href="/admin" className="text-gold-400 hover:underline">
+                  Admin Portal (አድሚን ዳሽቦርድ)
+                </Link>
               </li>
             </ul>
           </div>
@@ -181,7 +186,7 @@ export function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-between text-zinc-500 text-[11px] pt-4">
             <div>
-              &copy; {new Date().getFullYear()} Habesha Luxe Couture Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Atiye Ethiopia (አትዬ ኢትዮጵያ) Couture Inc. All rights reserved.
             </div>
             <div className="flex space-x-4 mt-2 sm:mt-0">
               <span className="hover:text-zinc-300 cursor-pointer">Privacy Charter</span>

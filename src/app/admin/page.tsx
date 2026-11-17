@@ -189,7 +189,7 @@ export default function AdminOrdersPage() {
           <div>
             <div className="flex items-center space-x-2 text-gold-400 text-xs font-semibold uppercase tracking-wider mb-1">
               <ShieldCheck className="w-4 h-4" />
-              <span>Habesha Luxe Store Operations</span>
+              <span>Atiye Ethiopia (አትዬ ኢትዮጵያ) Store Operations</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-black text-ivory-100">
               Orders & Dispatch Management

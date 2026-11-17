@@ -7,7 +7,7 @@ import { ImperialSeal, TibebBorder } from "../ui/EthiopianPattern";
 
 export function BrandStorySection() {
   return (
-    <section id="about-habesha-luxe" className="relative py-20 bg-obsidian-950 border-t border-gold-500/20 overflow-hidden">
+    <section id="about-atiye-ethiopia" className="relative py-20 bg-obsidian-950 border-t border-gold-500/20 overflow-hidden">
       {/* Background Subtle Luxury Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -19,7 +19,7 @@ export function BrandStorySection() {
             <span>The Maison & Heritage • የክብር እና የጥበብ ቤት</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-black text-ivory-100 tracking-tight leading-tight">
-            About Habesha Luxe
+            About Atiye Ethiopia (አትዬ ኢትዮጵያ)
           </h2>
           <p className="font-serif text-sm sm:text-base text-gold-400/90 tracking-[0.2em] uppercase font-semibold">
             Where Three Millennia of Sovereign Majesty Meet Contemporary Haute Couture
@@ -32,8 +32,8 @@ export function BrandStorySection() {
           <div className="lg:col-span-5 relative flex justify-center">
             <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-gold-500/35 shadow-2xl shadow-gold-500/10 group">
               <Image
-                src="/images/hero-bridal.jpg?v=20261025"
-                alt="Habesha Luxe Haute Couture Bridal Gala Kemis"
+                src="/images/hero-bridal.jpg"
+                alt="Atiye Ethiopia Haute Couture Bridal Gala Kemis"
                 fill
                 sizes="(max-width: 1024px) 100vw, 420px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -49,7 +49,7 @@ export function BrandStorySection() {
               <div className="absolute bottom-6 inset-x-6 p-4 rounded-2xl bg-obsidian-900/95 backdrop-blur-md border border-gold-500/30 space-y-1 shadow-2xl">
                 <div className="flex items-center space-x-1.5 text-gold-400 text-[10px] font-bold uppercase tracking-widest">
                   <Sparkles className="w-3 h-3 text-gold-400" />
-                  <span>The Habesha Luxe Charter</span>
+                  <span>The Atiye Ethiopia Charter</span>
                 </div>
                 <h4 className="font-serif text-sm font-bold text-ivory-100">
                   Haute Couture Born in Addis Ababa
@@ -68,18 +68,18 @@ export function BrandStorySection() {
                 A Living Celebration of Ethiopian Royalty
               </h3>
               <p className="text-zinc-300 font-normal leading-relaxed">
-                <strong className="text-gold-400 font-serif">Habesha Luxe</strong> was founded on a singular conviction: that 
+                <strong className="text-gold-400 font-serif">Atiye Ethiopia (አትዬ ኢትዮጵያ)</strong> was founded on a singular conviction: that 
                 Ethiopia’s 3,000-year textile heritage stands shoulder-to-shoulder with the finest couture houses of Paris, Milan, and London. 
                 Rooted in the royal courts of Aksum, Lalibela, and Gondar, our maison curates the sacred craft of the Ethiopian 
-                <span className="text-gold-300 font-semibold italic"> Shemane</span> into modern runway elegance and bespoke ceremonial attire.
+                <span className="text-gold-300 font-semibold italic"> Shemane</span> into modern runway elegance, royal bridal couture, and refined everyday luxury.
               </p>
               <p className="text-zinc-300 font-normal leading-relaxed">
-                Every Habesha Luxe creation begins with raw organic highland cotton (ፈትል), meticulously handspun on traditional drop spindles by elder women artisans. 
+                Every Atiye Ethiopia creation begins with raw organic highland cotton (ፈትል), meticulously handspun on traditional drop spindles by elder women artisans. 
                 It is then hand-woven over four to eight weeks on ancient wooden pedal looms by generational master weavers in Dorze and Shiro Meda. 
                 Adorned with pure 24-karat gold dipped bullion thread, geometric star tilf motifs (ኮከብ ጥልፍ), and ancient Ge&apos;ez cross borders, our garments are not seasonal fast-fashion—they are sacred, wearable heirlooms passed from one generation to the next.
               </p>
               <p className="text-zinc-300 font-normal leading-relaxed">
-                Whether creating bespoke royal bridal gowns for grand <span className="text-gold-300 font-semibold">Serg (ሰርግ)</span> weddings, coordinating matching sets for intimate <span className="text-gold-300 font-semibold">Melse (መልስ)</span> festivities, or crafting featherlight caftans for diplomatic galas and diaspora celebrations in North America, Europe, and the Middle East, Habesha Luxe ensures every stitch embodies dignity, grace, and unmatched artisanal authenticity.
+                Spanning our 6 signature collections—from <strong className="text-gold-300">Tibeb Heritage</strong> and <strong className="text-gold-300">Royal Leather & Belts</strong> to <strong className="text-gold-300">Everyday Tibeb</strong>, <strong className="text-gold-300">Mekwanint Men&apos;s Attire</strong>, <strong className="text-gold-300">Negestat Royal Bridal</strong>, and bespoke <strong className="text-gold-300">Atiye Signature Couture</strong>—Atiye Ethiopia ensures every creation embodies dignity, grace, and unmatched artisanal authenticity.
               </p>
             </div>
 
@@ -90,15 +90,15 @@ export function BrandStorySection() {
               </p>
               <div className="flex items-center justify-between text-xs pt-1">
                 <span className="text-gold-400 font-semibold tracking-wider uppercase">
-                  Maison Habesha Luxe • Atelier Manifesto
+                  Maison Atiye Ethiopia • Atelier Manifesto
                 </span>
-                <span className="text-zinc-500 text-[11px]">Bole Medhanialem, Addis Ababa</span>
+                <span className="text-zinc-500 text-[11px]">Bole Medhanialem, Edna Plaza, Addis Ababa</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 3 Core Pillars of Habesha Luxe */}
+        {/* 3 Core Pillars of Atiye Ethiopia */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
           <div className="p-6 rounded-2xl bg-obsidian-900/80 border border-gold-500/20 space-y-3 hover:border-gold-500/50 transition-all">
             <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">

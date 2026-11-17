@@ -119,10 +119,10 @@ export default function AdminLoginPage() {
       <div className="py-6 px-4 sm:px-8 border-b border-gold-500/15 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <span className="font-serif font-black text-lg tracking-[0.2em] bg-clip-text text-transparent bg-gradient-to-r from-ivory-100 via-gold-300 to-gold-500">
-            HABESHA LUXE
+            ATIYE ETHIOPIA
           </span>
           <span className="hidden sm:inline-block text-[10px] uppercase tracking-[0.25em] text-gold-400 font-medium border-l border-zinc-700 pl-2">
-            Store Portal
+            አትዬ ኢትዮጵያ • Store Portal
           </span>
         </Link>
 
@@ -277,7 +277,7 @@ export default function AdminLoginPage() {
           {/* Bottom Security Info */}
           <div className="flex items-center justify-center space-x-1.5 text-[11px] text-zinc-500 pt-1">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Habesha Luxe 256-Bit SSL HMAC-SHA256 Protected</span>
+            <span>Atiye Ethiopia 256-Bit SSL HMAC-SHA256 Protected</span>
           </div>
         </div>
       </div>

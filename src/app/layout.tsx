@@ -16,17 +16,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://habesha-luxe.vercel.app")
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://atiye-ethiopia.vercel.app")
   ),
-  title: "Habesha Luxe | Royal Ethiopian Couture & Modern Tibeb Fashion",
+  title: "Atiye Ethiopia (አትዬ ኢትዮጵያ) | Royal Ethiopian Couture & Modern Tibeb Fashion",
   description:
-    "Habesha Luxe curates 3,000 years of Ethiopian textile mastery into high-fashion haute couture. Handcrafted in Addis Ababa from organic handspun Shema cotton and 24k gold tilf embroidery. Bespoke Habesha Kemis, royal bridal Melse gowns, and modern Tibeb with seamless Chapa payment integration (Telebirr & CBE Birr).",
+    "Atiye Ethiopia (አትዬ ኢትዮጵያ) curates 3,000 years of Ethiopian textile mastery into high-fashion haute couture. Handcrafted in Addis Ababa from organic handspun Shema cotton and 24k gold tilf embroidery. Bespoke Habesha Kemis, royal bridal Melse gowns, and modern Tibeb with seamless Chapa payment integration (Telebirr & CBE Birr).",
   keywords: [
-    "Habesha Luxe",
+    "Atiye Ethiopia",
+    "አትዬ ኢትዮጵያ",
     "Habesha Kemis",
     "Ethiopian Haute Couture",
-    "Ethiopian Traditional Clothing",
-    "Tibeb Dress",
+    "Tibeb Heritage",
+    "Royal Leather Craft",
+    "Everyday Tibeb",
+    "Mekwanint Men Attire",
+    "Negestat Royal Bridal",
+    "Atiye Signature Couture",
     "Ethiopian Bridal Couture",
     "Melse Dress",
     "Dorze Weaving",
@@ -38,11 +43,11 @@ export const metadata: Metadata = {
     "CBE Birr",
     "Addis Ababa Luxury Fashion",
   ],
-  authors: [{ name: "Habesha Luxe Couture", url: "mailto:getasewshumie@gmail.com" }],
+  authors: [{ name: "Atiye Ethiopia Couture", url: "mailto:getasewshumie@gmail.com" }],
   creator: "Getasew Shumie",
-  publisher: "Habesha Luxe",
+  publisher: "Atiye Ethiopia (አትዬ ኢትዮጵያ)",
   openGraph: {
-    title: "Habesha Luxe | Royal Ethiopian Haute Couture",
+    title: "Atiye Ethiopia (አትዬ ኢትዮጵያ) | Royal Ethiopian Haute Couture",
     description:
       "Bespoke Ethiopian traditional attire, imperial Habesha Kemis, and modern runway Tibeb handcrafted from organic Shema cotton with Chapa payment gateway integration.",
     type: "website",
@@ -52,7 +57,7 @@ export const metadata: Metadata = {
         url: "/images/hero-bridal.jpg",
         width: 1200,
         height: 630,
-        alt: "Habesha Luxe Haute Couture",
+        alt: "Atiye Ethiopia Haute Couture",
       },
     ],
   },

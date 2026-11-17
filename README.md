@@ -1,5 +1,5 @@
-# Habesha Luxe (ሀበሻ ሉክስ)
-### High-End Ethiopian Couture & Authentic Apparel Platform with Chapa Payment Integration
+# Atiye Ethiopia (አትዬ ኢትዮጵያ)
+### Royal Ethiopian Haute Couture & Authentic Apparel Platform with Chapa Payment Integration
 
 [![Next.js 14](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org)
@@ -7,7 +7,7 @@
 [![Chapa](https://img.shields.io/badge/Payment-Chapa_API_v1-00875A?style=for-the-badge)](https://chapa.co)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-**Habesha Luxe (የኢትዮጵያ ንጉሣዊ ልብስ)** curates 3,000 years of Ethiopian royal textile heritage into contemporary high-fashion haute couture. Handcrafted in our Addis Ababa master atelier from pure organic handspun Shema cotton (ፈትል), 24k gold bullion tilf embroidery (ጥልፍ), and generational Dorze and Chencha pedal-loom artistry, Habesha Luxe designs made-to-measure bridal gowns, ceremonial couples attire for Serg and Melse, and modern runway Tibeb for discerning clients worldwide. Seamlessly integrated with Ethiopia's leading payment gateway, **Chapa** (supporting **Telebirr**, **CBE Birr**, **Awash Birr**, and **Visa / Mastercard**).
+**Atiye Ethiopia (አትዬ ኢትዮጵያ)** curates 3,000 years of Ethiopian royal textile heritage into contemporary high-fashion haute couture. Handcrafted in our Addis Ababa master atelier from pure organic handspun Shema cotton (ፈትል), 24k gold bullion tilf embroidery (ጥልፍ), and generational Dorze and Chencha pedal-loom artistry, Atiye Ethiopia designs made-to-measure bridal gowns, ceremonial couples attire for Serg and Melse, and modern runway Tibeb for discerning clients worldwide. Seamlessly integrated with Ethiopia's leading payment gateway, **Chapa** (supporting **Telebirr**, **CBE Birr**, **Awash Birr**, and **Visa / Mastercard**).
 
 > *"We do not merely tailor fabric; we weave three millennia of sovereign African dignity, spiritual symbolism, and artisan soul into wearable heirlooms."*
 
@@ -33,7 +33,7 @@
 - **Cultural Design Motifs**:
   - Handcrafted SVG **Tibeb Borders** & **Meskel Cross** patterns
   - Imperial Seal of Ethiopia badge
-  - Dual English & Amharic script typography (e.g. `እቴጌ መነን የንጉሥ ጥበብ ቀሚስ`)
+  - Dual English & Amharic script typography (e.g. `አትዬ ኢትዮጵያ • የጥበብ ቅርስ`)
 
 ---
 
@@ -41,13 +41,14 @@
 
 ### 1. High-Impact Hero & Dynamic Catalog
 - **Hero Showcase**: Luxury imagery, stats counter (100% Handspun Shema, 160+ hours per gown, Chapa verified).
-- **Dynamic Category Filtering**:
+- **Dynamic Category Filtering (6 Authentic Ethiopian Collections)**:
   1. *All Collections*
-  2. *Couples & Bridal (የጥንዶች እና የሰርግ)*
-  3. *Traditional Kemis (ሀበሻ ቀሚስ)*
-  4. *Modern Tibeb & Ready-to-Wear (ዘመናዊ ጥበብ)*
-  5. *Men's Traditional Attire (የወንዶች ባህላዊ ልብስ)*
-  6. *Handwoven Netela & Accessories (ነጠላ እና መለዋወጫዎች)*
+  2. *Tibeb Heritage (የጥበብ ቅርስ)*
+  3. *Royal Leather & Belt Craft (የቆዳ እና የመቀነት ጥበብ)*
+  4. *Everyday Tibeb (የዕለት ተዕለት ጥበብ)*
+  5. *Mekwanint Men's Attire (የመኳንንት እና የወንዶች ጥበብ)*
+  6. *Negestat Royal Bridal (የነገሥታት እና የሰርግ ክብር)*
+  7. *Atiye Signature Couture (የአትዬ ልዩ ድምቀት)*
 - **Instant Search & Multi-Sort**: Search by item name, origin (Dorze, Gondar, Shiro Meda), or Amharic title; sort by Price (Low to High, High to Low), Rating, or Newest.
 - **Pre-populated Authentic Catalog (Wedding Season Edition - Up to 55% OFF)**:
   - **Royal Purple & Gold Star Tilf Habesha Kemis** (24,500 ETB - 50% Off Best Seller)
@@ -76,7 +77,7 @@
   - *Ethiopian Regional Express*: **450 ETB** (2–4 days)
   - *Global Diaspora Priority (DHL Express)*: **3,500 ETB** (4–7 days)
 - Live currency estimate toggle: **ETB (Primary)** vs **USD ($)**.
-- Persistent state using `localStorage` via Zustand.
+- Persistent state using `localStorage` via Zustand (`atiye-ethiopia-cart-storage`).
 
 ### 4. Production Chapa Payment Gateway Flow
 1. **Checkout Form**:
@@ -129,8 +130,10 @@ habesha-luxe/
 ├── src/
 │   ├── app/
 │   │   ├── admin/
+│   │   │   ├── login/                 # Secure email & password login
 │   │   │   └── page.tsx               # Store admin dashboard
 │   │   ├── api/
+│   │   │   ├── admin/auth/            # Admin login & session verification
 │   │   │   ├── admin/orders/          # Admin orders GET & PATCH
 │   │   │   ├── bridal-consultation/   # Bridal fitting booking API
 │   │   │   └── payment/
@@ -169,7 +172,7 @@ habesha-luxe/
 │   │   ├── chapa.ts                   # Chapa API integration client
 │   │   ├── data/
 │   │   │   ├── delivery.ts            # Sub-cities & shipping zones
-│   │   │   └── products.ts            # 9 authentic luxury Ethiopian products
+│   │   │   └── products.ts            # 12 authentic luxury Ethiopian products in 6 categories
 │   │   ├── storage/
 │   │   │   └── orders.ts              # Persistent file-based order store
 │   │   ├── store/
@@ -198,7 +201,7 @@ habesha-luxe/
 
 ### 1. Clone & Install
 ```bash
-git clone <repository-url>
+git clone https://github.com/gshumie/habesha-luxe.git
 cd "habesha luxe"
 npm install
 ```
@@ -232,7 +235,7 @@ ADMIN_SECRET_KEY=habesha-luxe-admin-2025
 NEXT_PUBLIC_ENABLE_SIMULATED_PAYMENT=true
 ```
 
-> **Note on Testing**: If you leave the default keys as `CHASECK_TEST-...` or if Chapa test credentials are unverified, Habesha Luxe will automatically activate the **Chapa Sandbox Gateway** (`/checkout/simulate-chapa`), enabling complete end-to-end checkout, Telebirr authorization, and verified invoice generation without requiring a bank account! When a valid live key is added, it connects to `https://api.chapa.co/v1` automatically.
+> **Note on Testing**: If you leave the default keys as `CHASECK_TEST-...` or if Chapa test credentials are unverified, Atiye Ethiopia will automatically activate the **Chapa Sandbox Gateway** (`/checkout/simulate-chapa`), enabling complete end-to-end checkout, Telebirr authorization, and verified invoice generation without requiring a bank account! When a valid live key is added, it connects to `https://api.chapa.co/v1` automatically.
 
 ### 3. Run Development Server
 ```bash
@@ -250,7 +253,7 @@ npm run start
 
 ## 💳 Testing the Chapa Payment Flow
 
-1. Browse the collection on the home page and click **Quick View** on any Kemis (e.g. *Queen Menen Imperial Tibeb Kemis*).
+1. Browse the collection on the home page and click **Quick View** on any attire.
 2. Choose a size or select **Custom Measurement** to enter bespoke Bust, Waist, and Length dimensions.
 3. Click **Add to Bag** &rarr; open the **Slide-over Shopping Cart**.
 4. Review delivery rates (complimentary for Addis Ababa) and click **Proceed to Chapa Checkout**.
@@ -261,7 +264,7 @@ npm run start
 7. Click **Authorize Payment** with Telebirr or CBE Birr.
 8. You will be redirected back to the verified **Official Tax Invoice / Receipt** (`/checkout/success?tx_ref=...`).
 9. Click **Print Tax Invoice** to preview or save the document as PDF.
-10. Head to `/admin` (Passcode: `habesha-luxe-admin-2025`) to inspect the newly recorded order and update dispatch status to `Tailoring` or `Out for Delivery`.
+10. Head to `/admin` (`getasewshumie@gmail.com` / `SetYourStrongPassword2025!`) to inspect the newly recorded order and update dispatch status to `Tailoring` or `Out for Delivery`.
 
 ---
 
@@ -274,7 +277,8 @@ npm run start
    - `CHAPA_SECRET_KEY` = your live Chapa Secret Key
    - `CHAPA_PUBLIC_KEY` = your live Chapa Public Key
    - `NEXT_PUBLIC_BASE_URL` = `https://your-domain.vercel.app`
-   - `ADMIN_SECRET_KEY` = strong custom passphrase
+   - `ADMIN_EMAIL` = `getasewshumie@gmail.com`
+   - `ADMIN_PASSWORD` = `SetYourStrongPassword2025!`
 4. Click **Deploy**. Vercel will automatically build the Next.js App Router project.
 5. In your [Chapa Dashboard](https://dashboard.chapa.co), set your Webhook URL to:
    `https://your-domain.vercel.app/api/payment/webhook`
@@ -283,7 +287,7 @@ npm run start
 Using PM2:
 ```bash
 npm run build
-pm2 start npm --name "habesha-luxe" -- start
+pm2 start npm --name "atiye-ethiopia" -- start
 pm2 save
 ```
 Configure Nginx as a reverse proxy pointing to `http://127.0.0.1:3000` with SSL via Let's Encrypt Certbot.
@@ -294,9 +298,9 @@ Configure Nginx as a reverse proxy pointing to `http://127.0.0.1:3000` with SSL 
 - **PCI-DSS Compliance**: Sensitive card details are processed directly through Chapa's encrypted tokenization.
 - **Server-Side API Secrets**: Secret keys (`CHAPA_SECRET_KEY`) never touch client-side bundles.
 - **Idempotency**: Transaction references (`txRef`) are generated using high-entropy unique identifiers to prevent duplicate billing.
-- **Admin Authentication**: Store management portal protected with session-based passphrase checks.
+- **Admin Authentication**: Store management portal protected with email & password authentication and signed session cookies.
 
 ---
 
 ## 🇪🇹 Cultural Stewardship
-Habesha Luxe is dedicated to preserving indigenous Ethiopian handloom heritage. A percentage of all proceeds goes toward the **Chencha & Shiro Meda Master Shemane Apprenticeship Program**, training the next generation of Ethiopian weavers.
+Atiye Ethiopia (አትዬ ኢትዮጵያ) is dedicated to preserving indigenous Ethiopian handloom heritage. A percentage of all proceeds goes toward the **Chencha & Shiro Meda Master Shemane Apprenticeship Program**, training the next generation of Ethiopian weavers.
