@@ -31,6 +31,28 @@ function ChapaSimulatorContent() {
         return;
       }
 
+      // Enrich pending order with customer's selected payment method
+      if (typeof window !== "undefined") {
+        try {
+          const pendingRaw =
+            localStorage.getItem(`atiye_pending_order_${txRef}`) ||
+            localStorage.getItem("atiye_last_pending_order");
+          if (pendingRaw) {
+            const parsed = JSON.parse(pendingRaw);
+            parsed.paymentMethod =
+              selectedMethod === "cbe"
+                ? "CBE Birr (Chapa Direct)"
+                : selectedMethod === "awash"
+                ? "Awash Birr (Chapa Direct)"
+                : selectedMethod === "card"
+                ? "Visa / Mastercard (Chapa Direct)"
+                : "Telebirr (Chapa Direct)";
+            localStorage.setItem(`atiye_pending_order_${txRef}`, JSON.stringify(parsed));
+            localStorage.setItem("atiye_last_pending_order", JSON.stringify(parsed));
+          }
+        } catch (_) {}
+      }
+
       // Call verification endpoint or redirect directly to success return_url
       router.push(`/checkout/success?tx_ref=${encodeURIComponent(txRef)}`);
     }, 1200);

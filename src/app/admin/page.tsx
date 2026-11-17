@@ -43,10 +43,45 @@ export default function AdminOrdersPage() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
+      // 1. Sync any locally stored completed orders to the server instance
+      try {
+        const localCompletedRaw = localStorage.getItem("atiye_completed_orders_list");
+        if (localCompletedRaw) {
+          const localOrders: Order[] = JSON.parse(localCompletedRaw);
+          if (Array.isArray(localOrders) && localOrders.length > 0) {
+            await fetch("/api/orders/sync", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ orders: localOrders }),
+            }).catch(() => {});
+          }
+        }
+      } catch (syncErr) {
+        console.warn("Local orders sync notice:", syncErr);
+      }
+
+      // 2. Fetch all orders from server
       const res = await fetch("/api/admin/orders");
       const data = await res.json();
       if (data.success && data.orders) {
-        setOrders(data.orders);
+        let mergedOrders: Order[] = [...data.orders];
+
+        // Ensure any local orders are also displayed if server is fresh
+        try {
+          const localCompletedRaw = localStorage.getItem("atiye_completed_orders_list");
+          if (localCompletedRaw) {
+            const localOrders: Order[] = JSON.parse(localCompletedRaw);
+            const serverTxRefs = new Set(mergedOrders.map((o) => o.txRef));
+            for (const lo of localOrders) {
+              if (lo && lo.txRef && !serverTxRefs.has(lo.txRef)) {
+                mergedOrders.unshift(lo);
+                serverTxRefs.add(lo.txRef);
+              }
+            }
+          }
+        } catch (_) {}
+
+        setOrders(mergedOrders);
       } else if (res.status === 401) {
         setAuthenticated(false);
         router.replace("/admin/login");

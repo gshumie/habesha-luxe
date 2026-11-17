@@ -124,6 +124,32 @@ export default function CheckoutPage() {
         throw new Error(data.message || "Failed to initialize Chapa payment gateway");
       }
 
+      // Create a resilient client-side snapshot of the pending order for serverless verification fallback
+      const pendingOrderSnapshot = {
+        id: data.orderId || `ord-${Date.now()}`,
+        txRef: data.txRef,
+        customer: {
+          ...formData,
+          deliveryZone,
+        },
+        items: [...items],
+        subtotalETB: totals.subtotalETB,
+        deliveryFeeETB: totals.deliveryFeeETB,
+        grandTotalETB: totals.grandTotalETB,
+        currency: "ETB",
+        paymentStatus: "pending",
+        dispatchStatus: "processing",
+        chapaCheckoutUrl: data.checkoutUrl,
+        createdAt: new Date().toISOString(),
+      };
+
+      try {
+        localStorage.setItem(`atiye_pending_order_${data.txRef}`, JSON.stringify(pendingOrderSnapshot));
+        localStorage.setItem("atiye_last_pending_order", JSON.stringify(pendingOrderSnapshot));
+      } catch (storageErr) {
+        console.warn("Could not save pending order snapshot to localStorage:", storageErr);
+      }
+
       // Order initialized successfully. Clear cart from localStorage before redirecting to Chapa.
       clearCart();
 

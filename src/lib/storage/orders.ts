@@ -1,9 +1,11 @@
 import { Order, PaymentStatus, DispatchStatus } from "@/types/order";
 import fs from "fs";
 import path from "path";
+import os from "os";
 
 const DATA_DIR = path.join(process.cwd(), ".data");
 const ORDERS_FILE = path.join(DATA_DIR, "orders.json");
+const TMP_ORDERS_FILE = path.join(os.tmpdir(), "atiye_orders.json");
 
 // Initial Seed Orders for realistic luxury store demonstration
 const INITIAL_ORDERS: Order[] = [
@@ -280,26 +282,53 @@ class OrderStore {
         fs.writeFileSync(ORDERS_FILE, JSON.stringify(INITIAL_ORDERS, null, 2), "utf-8");
       }
     } catch (err) {
-      // In serverless / read-only environment, silently use in-memory store
-      console.warn("OrderStore file initialization notice (using memory fallback):", err);
+      // In serverless / read-only environment, silently use /tmp or in-memory fallback
+      try {
+        if (!fs.existsSync(TMP_ORDERS_FILE)) {
+          fs.writeFileSync(TMP_ORDERS_FILE, JSON.stringify(INITIAL_ORDERS, null, 2), "utf-8");
+        }
+      } catch (_) {}
     }
   }
 
   public getAll(): Order[] {
     this.ensureFile();
+    const orderMap = new Map<string, Order>();
+
+    // 1. Seed with in-memory orders
+    for (const order of this.inMemoryOrders) {
+      orderMap.set(order.txRef, order);
+    }
+
+    // 2. Read from primary ORDERS_FILE if accessible
     try {
       if (fs.existsSync(ORDERS_FILE)) {
         const raw = fs.readFileSync(ORDERS_FILE, "utf-8");
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          this.inMemoryOrders = parsed;
-          return parsed;
+        if (Array.isArray(parsed)) {
+          for (const order of parsed) {
+            orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+          }
         }
       }
-    } catch (err) {
-      console.warn("Error reading orders file, using in-memory store:", err);
-    }
-    return this.inMemoryOrders;
+    } catch (_) {}
+
+    // 3. Read from writable TMP_ORDERS_FILE on serverless environments
+    try {
+      if (fs.existsSync(TMP_ORDERS_FILE)) {
+        const raw = fs.readFileSync(TMP_ORDERS_FILE, "utf-8");
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          for (const order of parsed) {
+            orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+          }
+        }
+      }
+    } catch (_) {}
+
+    const merged = Array.from(orderMap.values());
+    this.inMemoryOrders = merged;
+    return merged;
   }
 
   public getByTxRef(txRef: string): Order | undefined {
@@ -325,13 +354,26 @@ class OrderStore {
 
     this.inMemoryOrders = orders;
 
+    // Try saving to primary file
+    let savedToPrimary = false;
     try {
       fs.writeFileSync(ORDERS_FILE, JSON.stringify(orders, null, 2), "utf-8");
-    } catch (err) {
-      console.warn("Error saving orders file, stored in memory:", err);
-    }
+      savedToPrimary = true;
+    } catch (_) {}
+
+    // Also persist to /tmp fallback file for serverless cold-start resilience
+    try {
+      fs.writeFileSync(TMP_ORDERS_FILE, JSON.stringify(orders, null, 2), "utf-8");
+    } catch (_) {}
 
     return order;
+  }
+
+  public syncOrders(incomingOrders: Order[]): Order[] {
+    for (const order of incomingOrders) {
+      this.save(order);
+    }
+    return this.getAll();
   }
 
   public updatePaymentStatus(
