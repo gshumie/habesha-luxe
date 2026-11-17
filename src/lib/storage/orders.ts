@@ -40,7 +40,7 @@ const INITIAL_ORDERS: Order[] = [
           fabricDetails: "100% Shemane cotton",
           craftsmanship: "160 hours hand-stitched",
           images: [
-            "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80",
+            "/images/products/gondar-heritage-wedding-kemis.jpg",
           ],
           availableSizes: ["Custom Measurement"],
           inStock: true,
@@ -74,7 +74,7 @@ const INITIAL_ORDERS: Order[] = [
           fabricDetails: "Carded organic cotton",
           craftsmanship: "Double-bordered loom",
           images: [
-            "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=1000&q=80",
+            "/images/products/cotton-netela-shawl.jpg",
           ],
           availableSizes: ["Custom Measurement"],
           inStock: true,
@@ -130,7 +130,7 @@ const INITIAL_ORDERS: Order[] = [
           fabricDetails: "Highland linen and buluuk",
           craftsmanship: "Mother of pearl buttons",
           images: [
-            "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=80",
+            "/images/products/mens-imperial-linen-shirt.jpg",
           ],
           availableSizes: ["L"],
           inStock: true,
@@ -188,7 +188,7 @@ const INITIAL_ORDERS: Order[] = [
           fabricDetails: "Silk chiffon blend",
           craftsmanship: "Contemporary cut",
           images: [
-            "https://images.unsplash.com/photo-1550614000-4895a10e1bfd?auto=format&fit=crop&w=1000&q=80",
+            "/images/products/everyday-crinkled-dress.jpg",
           ],
           availableSizes: ["M"],
           inStock: true,
@@ -242,7 +242,7 @@ const INITIAL_ORDERS: Order[] = [
           fabricDetails: "Vegetable tanned leather",
           craftsmanship: "Hand-stitched",
           images: [
-            "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=80",
+            "/images/products/highland-calfskin-handbag-mekenet.jpg",
           ],
           availableSizes: ["Standard"],
           inStock: true,

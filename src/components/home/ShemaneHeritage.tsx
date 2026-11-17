@@ -39,8 +39,8 @@ export function ShemaneHeritage() {
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-gold-500/30 shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80"
-                alt="Ethiopian Shemane Weaving Craft"
+                src="/images/shemane-traditional-weaver.jpg"
+                alt="Ethiopian Master Shemane Weaving on Traditional Wooden Loom"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
