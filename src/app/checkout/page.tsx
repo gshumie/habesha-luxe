@@ -146,6 +146,14 @@ export default function CheckoutPage() {
       try {
         localStorage.setItem(`atiye_pending_order_${data.txRef}`, JSON.stringify(pendingOrderSnapshot));
         localStorage.setItem("atiye_last_pending_order", JSON.stringify(pendingOrderSnapshot));
+
+        // Maintain list of pending orders in localStorage
+        const existingPendingRaw = localStorage.getItem("atiye_pending_orders");
+        const existingPending = existingPendingRaw ? JSON.parse(existingPendingRaw) : [];
+        localStorage.setItem(
+          "atiye_pending_orders",
+          JSON.stringify([pendingOrderSnapshot, ...existingPending.filter((o: any) => o.txRef !== data.txRef)])
+        );
       } catch (storageErr) {
         console.warn("Could not save pending order snapshot to localStorage:", storageErr);
       }

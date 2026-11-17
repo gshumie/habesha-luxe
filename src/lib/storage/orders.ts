@@ -7,268 +7,8 @@ const DATA_DIR = path.join(process.cwd(), ".data");
 const ORDERS_FILE = path.join(DATA_DIR, "orders.json");
 const TMP_ORDERS_FILE = path.join(os.tmpdir(), "atiye_orders.json");
 
-// Initial Seed Orders for realistic luxury store demonstration
-const INITIAL_ORDERS: Order[] = [
-  {
-    id: "ord-hl-801",
-    txRef: "HL-LZ8912-K9Q2",
-    chapaTransactionId: "CHAPA-ET-894120",
-    customer: {
-      firstName: "Selamawit",
-      lastName: "Desta",
-      email: "selam.desta@ethionet.et",
-      phoneNumber: "0911245678",
-      city: "Addis Ababa",
-      subCity: "Bole (ቦሌ)",
-      woreda: "Woreda 03",
-      houseNumber: "House 458",
-      specificAddress: "Near Edna Mall, Behind Medhanialem Church",
-      deliveryZone: "addis-ababa",
-      deliveryNotes: "Call when arriving at the security gate.",
-    },
-    items: [
-      {
-        id: "item-1",
-        product: {
-          id: "hl-prod-004",
-          slug: "classic-hand-embroidered-bridal-kemis",
-          name: "Classic Hand-Embroidered Bridal Kemis",
-          category: "negestat-royal-bridal",
-          priceETB: 26500,
-          rating: 5.0,
-          reviewCount: 52,
-          shortDescription: "Our crown jewel bridal kemis with cascading royal gold tilf.",
-          description: "",
-          fabricDetails: "100% Shemane cotton",
-          craftsmanship: "160 hours hand-stitched",
-          images: [
-            "/images/products/gondar-heritage-wedding-kemis.jpg",
-          ],
-          availableSizes: ["Custom Measurement"],
-          inStock: true,
-          stockCount: 3,
-          tags: ["Bridal"],
-          origin: "Addis Ababa",
-        },
-        selectedSize: "Custom Measurement",
-        customMeasurements: {
-          bust: "88 cm",
-          waist: "70 cm",
-          hips: "96 cm",
-          shoulderToFloor: "145 cm",
-          armLength: "58 cm",
-          notes: "Wedding date is next month on Tir 25. Please prioritize tilf finish.",
-        },
-        quantity: 1,
-      },
-      {
-        id: "item-2",
-        product: {
-          id: "hl-prod-008",
-          slug: "handspun-pure-cotton-netela-and-shawl",
-          name: "Handspun Pure Cotton Netela & Shawl",
-          category: "tibeb-heritage",
-          priceETB: 3400,
-          rating: 4.93,
-          reviewCount: 67,
-          shortDescription: "Gossamer-soft Ethiopian Netela shawl.",
-          description: "",
-          fabricDetails: "Carded organic cotton",
-          craftsmanship: "Double-bordered loom",
-          images: [
-            "/images/products/cotton-netela-shawl.jpg",
-          ],
-          availableSizes: ["Custom Measurement"],
-          inStock: true,
-          stockCount: 25,
-          tags: ["Netela"],
-          origin: "Shiro Meda",
-        },
-        selectedSize: "Custom Measurement",
-        quantity: 2,
-      },
-    ],
-    subtotalETB: 33300,
-    deliveryFeeETB: 0,
-    grandTotalETB: 33300,
-    currency: "ETB",
-    paymentStatus: "paid",
-    dispatchStatus: "tailoring",
-    paymentMethod: "Telebirr (Chapa Direct)",
-    paymentReference: "CHAPA-TLB-894120",
-    createdAt: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
-    paidAt: new Date(Date.now() - 36 * 3600 * 1000).toISOString(),
-  },
-  {
-    id: "ord-hl-802",
-    txRef: "HL-MB4419-X8P1",
-    chapaTransactionId: "CHAPA-ET-771902",
-    customer: {
-      firstName: "Dawit",
-      lastName: "Hailemariam",
-      email: "dawit.haile@telecom.et",
-      phoneNumber: "0922891234",
-      city: "Addis Ababa",
-      subCity: "Kazanchis (ካዛንቺስ)",
-      woreda: "Woreda 08",
-      houseNumber: "Apt 4B, Sunshine Luxury Apts",
-      specificAddress: "Opposite Intercontinental Hotel",
-      deliveryZone: "addis-ababa",
-      deliveryNotes: "Call when at main gate.",
-    },
-    items: [
-      {
-        id: "item-3",
-        product: {
-          id: "hl-prod-007",
-          slug: "mens-imperial-linen-shirt-and-gabi",
-          name: "Men's Imperial Linen Shirt & Gabi",
-          category: "mekwanint-mens-attire",
-          priceETB: 8900,
-          rating: 4.89,
-          reviewCount: 19,
-          shortDescription: "Tailored ivory linen shirt with Gabi.",
-          description: "",
-          fabricDetails: "Highland linen and buluuk",
-          craftsmanship: "Mother of pearl buttons",
-          images: [
-            "/images/products/mens-imperial-linen-shirt.jpg",
-          ],
-          availableSizes: ["L"],
-          inStock: true,
-          stockCount: 10,
-          tags: ["Men"],
-          origin: "Wollo",
-        },
-        selectedSize: "L",
-        quantity: 1,
-      },
-    ],
-    subtotalETB: 8900,
-    deliveryFeeETB: 0,
-    grandTotalETB: 8900,
-    currency: "ETB",
-    paymentStatus: "paid",
-    dispatchStatus: "shipped",
-    paymentMethod: "CBE Birr (Chapa Direct)",
-    paymentReference: "CHAPA-CBE-771902",
-    courierName: "Bole VIP Express (ቦሌ ቪአይፒ ፈጣን ፖስታ)",
-    trackingCode: "BVP-ET-8912",
-    createdAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
-    paidAt: new Date(Date.now() - 14 * 3600 * 1000).toISOString(),
-    shippedAt: new Date(Date.now() - 4 * 3600 * 1000).toISOString(),
-  },
-  {
-    id: "ord-hl-803",
-    txRef: "HL-TG9021-V3W4",
-    customer: {
-      firstName: "Tigist",
-      lastName: "Moges",
-      email: "tigist.moges@yahoo.com",
-      phoneNumber: "0933567890",
-      city: "Hawassa",
-      subCity: "Tabor Subcity",
-      woreda: "Woreda 02",
-      houseNumber: "Villa 12",
-      specificAddress: "Near Haile Resort & Lake View Avenue",
-      deliveryZone: "regional-ethiopia",
-      deliveryNotes: "Call 30 mins before arrival in Hawassa.",
-    },
-    items: [
-      {
-        id: "item-4",
-        product: {
-          id: "hl-prod-002",
-          slug: "modern-azure-silk-chiffon-kemis",
-          name: "Modern Azure Silk-Chiffon Kemis",
-          category: "everyday-tibeb",
-          priceETB: 16000,
-          rating: 4.91,
-          reviewCount: 29,
-          shortDescription: "Contemporary loose-cut silk-chiffon dress.",
-          description: "",
-          fabricDetails: "Silk chiffon blend",
-          craftsmanship: "Contemporary cut",
-          images: [
-            "/images/products/everyday-crinkled-dress.jpg",
-          ],
-          availableSizes: ["M"],
-          inStock: true,
-          stockCount: 12,
-          tags: ["Modern"],
-          origin: "Kazanchis",
-        },
-        selectedSize: "M",
-        quantity: 1,
-      },
-    ],
-    subtotalETB: 16000,
-    deliveryFeeETB: 500,
-    grandTotalETB: 16500,
-    currency: "ETB",
-    paymentStatus: "pending",
-    dispatchStatus: "processing",
-    paymentMethod: "Awaiting Chapa Confirmation",
-    createdAt: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
-  },
-  {
-    id: "ord-hl-800",
-    txRef: "HL-KM1102-R5T9",
-    chapaTransactionId: "CHAPA-ET-660123",
-    customer: {
-      firstName: "Eden",
-      lastName: "Tilahun",
-      email: "eden.tilahun@gmail.com",
-      phoneNumber: "0944123456",
-      city: "Addis Ababa",
-      subCity: "Old Airport (የድሮ አውሮፕላን ማረፊያ)",
-      woreda: "Woreda 04",
-      houseNumber: "House 204",
-      specificAddress: "Near ICS American School",
-      deliveryZone: "addis-ababa",
-      deliveryNotes: "Delivered to house security directly.",
-    },
-    items: [
-      {
-        id: "item-5",
-        product: {
-          id: "hl-prod-009",
-          slug: "ethiopian-highland-calfskin-handbag",
-          name: "Ethiopian Highland Calfskin Handbag",
-          category: "royal-leather-belt",
-          priceETB: 7500,
-          rating: 4.87,
-          reviewCount: 16,
-          shortDescription: "Full-grain calfskin with antique brass.",
-          description: "",
-          fabricDetails: "Vegetable tanned leather",
-          craftsmanship: "Hand-stitched",
-          images: [
-            "/images/products/highland-calfskin-handbag-mekenet.jpg",
-          ],
-          availableSizes: ["Standard"],
-          inStock: true,
-          stockCount: 8,
-          tags: ["Leather"],
-          origin: "Merkato",
-        },
-        selectedSize: "Standard",
-        quantity: 1,
-      },
-    ],
-    subtotalETB: 7500,
-    deliveryFeeETB: 0,
-    grandTotalETB: 7500,
-    currency: "ETB",
-    paymentStatus: "paid",
-    dispatchStatus: "delivered",
-    paymentMethod: "Visa / Mastercard (Chapa)",
-    paymentReference: "CHAPA-VSA-660123",
-    createdAt: new Date(Date.now() - 72 * 3600 * 1000).toISOString(),
-    paidAt: new Date(Date.now() - 72 * 3600 * 1000).toISOString(),
-    deliveredAt: new Date(Date.now() - 8 * 3600 * 1000).toISOString(),
-  },
-];
+// Store starts with an empty array - only real customer orders placed via checkout appear
+const INITIAL_ORDERS: Order[] = [];
 
 class OrderStore {
   private inMemoryOrders: Order[] = [...INITIAL_ORDERS];
@@ -297,7 +37,9 @@ class OrderStore {
 
     // 1. Seed with in-memory orders
     for (const order of this.inMemoryOrders) {
-      orderMap.set(order.txRef, order);
+      if (order && order.txRef) {
+        orderMap.set(order.txRef, order);
+      }
     }
 
     // 2. Read from primary ORDERS_FILE if accessible
@@ -307,7 +49,9 @@ class OrderStore {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed)) {
           for (const order of parsed) {
-            orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+            if (order && order.txRef) {
+              orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+            }
           }
         }
       }
@@ -320,7 +64,9 @@ class OrderStore {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed)) {
           for (const order of parsed) {
-            orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+            if (order && order.txRef) {
+              orderMap.set(order.txRef, { ...(orderMap.get(order.txRef) || {}), ...order });
+            }
           }
         }
       }
@@ -355,10 +101,8 @@ class OrderStore {
     this.inMemoryOrders = orders;
 
     // Try saving to primary file
-    let savedToPrimary = false;
     try {
       fs.writeFileSync(ORDERS_FILE, JSON.stringify(orders, null, 2), "utf-8");
-      savedToPrimary = true;
     } catch (_) {}
 
     // Also persist to /tmp fallback file for serverless cold-start resilience
@@ -369,9 +113,30 @@ class OrderStore {
     return order;
   }
 
+  public delete(idOrTxRef: string): boolean {
+    this.ensureFile();
+    const orders = this.getAll();
+    const initialLen = orders.length;
+    const filtered = orders.filter((o) => o.id !== idOrTxRef && o.txRef !== idOrTxRef);
+
+    if (filtered.length !== initialLen) {
+      this.inMemoryOrders = filtered;
+      try {
+        fs.writeFileSync(ORDERS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
+      } catch (_) {}
+      try {
+        fs.writeFileSync(TMP_ORDERS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
+      } catch (_) {}
+      return true;
+    }
+    return false;
+  }
+
   public syncOrders(incomingOrders: Order[]): Order[] {
     for (const order of incomingOrders) {
-      this.save(order);
+      if (order && order.txRef) {
+        this.save(order);
+      }
     }
     return this.getAll();
   }

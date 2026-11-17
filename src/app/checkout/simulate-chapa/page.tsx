@@ -49,6 +49,13 @@ function ChapaSimulatorContent() {
                 : "Telebirr (Chapa Direct)";
             localStorage.setItem(`atiye_pending_order_${txRef}`, JSON.stringify(parsed));
             localStorage.setItem("atiye_last_pending_order", JSON.stringify(parsed));
+
+            const listRaw = localStorage.getItem("atiye_pending_orders");
+            if (listRaw) {
+              const list = JSON.parse(listRaw);
+              const updatedList = list.map((o: any) => (o.txRef === txRef ? parsed : o));
+              localStorage.setItem("atiye_pending_orders", JSON.stringify(updatedList));
+            }
           }
         } catch (_) {}
       }

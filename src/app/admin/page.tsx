@@ -24,6 +24,7 @@ import {
   LogOut,
   User,
   Crown,
+  Trash2,
 } from "lucide-react";
 import { Order, DispatchStatus, PaymentStatus } from "@/types/order";
 import { formatETB, formatDate } from "@/lib/utils";
@@ -40,19 +41,56 @@ export default function AdminOrdersPage() {
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [loggingOut, setLoggingOut] = useState(false);
 
+  // Helper to identify and purge stale demo/fake sample orders
+  const isDemoOrder = (o: any) => {
+    const name = `${o?.customer?.firstName || ""} ${o?.customer?.lastName || ""}`.toLowerCase();
+    const id = `${o?.id || ""} ${o?.txRef || ""}`.toLowerCase();
+    return (
+      name.includes("selamawit") ||
+      name.includes("bereket") ||
+      name.includes("tigist") ||
+      name.includes("tilahun") ||
+      id.includes("ord-hl-801") ||
+      id.includes("ord-hl-802") ||
+      id.includes("ord-hl-803") ||
+      id.includes("ord-hl-800")
+    );
+  };
+
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      // 1. Sync any locally stored completed orders to the server instance
+      // 1. Purge any stale demo orders from browser localStorage
       try {
-        const localCompletedRaw = localStorage.getItem("atiye_completed_orders_list");
+        for (const key of ["atiye_completed_orders_list", "atiye_completed_orders"]) {
+          const raw = localStorage.getItem(key);
+          if (raw) {
+            const list = JSON.parse(raw);
+            if (Array.isArray(list)) {
+              const cleaned = list.filter((o) => !isDemoOrder(o));
+              if (cleaned.length !== list.length) {
+                localStorage.setItem(key, JSON.stringify(cleaned));
+              }
+            }
+          }
+        }
+      } catch (_) {}
+
+      // 2. Sync any locally stored real completed orders to the server instance
+      try {
+        const localCompletedRaw =
+          localStorage.getItem("atiye_completed_orders_list") ||
+          localStorage.getItem("atiye_completed_orders");
         if (localCompletedRaw) {
           const localOrders: Order[] = JSON.parse(localCompletedRaw);
-          if (Array.isArray(localOrders) && localOrders.length > 0) {
+          const realOrders = Array.isArray(localOrders)
+            ? localOrders.filter((o) => !isDemoOrder(o))
+            : [];
+          if (realOrders.length > 0) {
             await fetch("/api/orders/sync", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ orders: localOrders }),
+              body: JSON.stringify({ orders: realOrders }),
             }).catch(() => {});
           }
         }
@@ -60,20 +98,22 @@ export default function AdminOrdersPage() {
         console.warn("Local orders sync notice:", syncErr);
       }
 
-      // 2. Fetch all orders from server
+      // 3. Fetch all orders from server
       const res = await fetch("/api/admin/orders");
       const data = await res.json();
       if (data.success && data.orders) {
-        let mergedOrders: Order[] = [...data.orders];
+        let mergedOrders: Order[] = data.orders.filter((o: Order) => !isDemoOrder(o));
 
-        // Ensure any local orders are also displayed if server is fresh
+        // Merge any local real orders not yet returned by server
         try {
-          const localCompletedRaw = localStorage.getItem("atiye_completed_orders_list");
+          const localCompletedRaw =
+            localStorage.getItem("atiye_completed_orders_list") ||
+            localStorage.getItem("atiye_completed_orders");
           if (localCompletedRaw) {
             const localOrders: Order[] = JSON.parse(localCompletedRaw);
             const serverTxRefs = new Set(mergedOrders.map((o) => o.txRef));
             for (const lo of localOrders) {
-              if (lo && lo.txRef && !serverTxRefs.has(lo.txRef)) {
+              if (lo && lo.txRef && !isDemoOrder(lo) && !serverTxRefs.has(lo.txRef)) {
                 mergedOrders.unshift(lo);
                 serverTxRefs.add(lo.txRef);
               }
@@ -90,6 +130,40 @@ export default function AdminOrdersPage() {
       console.error("Failed to load orders:", err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeleteOrder = async (orderId: string, txRef: string) => {
+    if (!confirm(`Are you sure you want to delete order ${txRef}?`)) return;
+
+    try {
+      await fetch("/api/admin/orders", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: orderId, txRef }),
+      });
+
+      // Remove from state
+      setOrders((prev) => prev.filter((o) => o.id !== orderId && o.txRef !== txRef));
+      if (selectedOrder?.id === orderId || selectedOrder?.txRef === txRef) {
+        setSelectedOrder(null);
+      }
+
+      // Clean from localStorage
+      try {
+        for (const key of ["atiye_completed_orders_list", "atiye_completed_orders"]) {
+          const raw = localStorage.getItem(key);
+          if (raw) {
+            const list = JSON.parse(raw);
+            if (Array.isArray(list)) {
+              const filtered = list.filter((o: Order) => o.id !== orderId && o.txRef !== txRef);
+              localStorage.setItem(key, JSON.stringify(filtered));
+            }
+          }
+        }
+      } catch (_) {}
+    } catch (err) {
+      console.error("Failed to delete order:", err);
     }
   };
 
@@ -362,8 +436,20 @@ export default function AdminOrdersPage() {
               <tbody className="divide-y divide-zinc-800/70">
                 {filteredOrders.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-zinc-500">
-                      No orders matching your criteria.
+                    <td colSpan={6} className="py-16 text-center">
+                      <div className="max-w-md mx-auto space-y-3">
+                        <div className="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center mx-auto">
+                          <Package className="w-6 h-6" />
+                        </div>
+                        <h4 className="font-serif font-bold text-sm text-ivory-100">
+                          {orders.length === 0 ? "No Customer Orders Yet" : "No Orders Matching Filter"}
+                        </h4>
+                        <p className="text-xs text-zinc-400 leading-relaxed">
+                          {orders.length === 0
+                            ? "No customer orders yet. Real orders placed through checkout will appear here automatically."
+                            : "No orders match your current search query or status filter."}
+                        </p>
+                      </div>
                     </td>
                   </tr>
                 ) : (
@@ -442,16 +528,28 @@ export default function AdminOrdersPage() {
 
                       {/* Action */}
                       <td className="py-4 px-4 text-right">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedOrder(order);
-                          }}
-                          className="px-2.5 py-1 rounded bg-obsidian-950 border border-zinc-700 text-zinc-300 hover:text-gold-400 hover:border-gold-500/40 text-xs inline-flex items-center space-x-1"
-                        >
-                          <Eye className="w-3.5 h-3.5" />
-                          <span>View</span>
-                        </button>
+                        <div className="flex items-center justify-end space-x-1.5">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedOrder(order);
+                            }}
+                            className="px-2.5 py-1 rounded bg-obsidian-950 border border-zinc-700 text-zinc-300 hover:text-gold-400 hover:border-gold-500/40 text-xs inline-flex items-center space-x-1 transition-colors"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>View</span>
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteOrder(order.id, order.txRef);
+                            }}
+                            className="p-1 rounded bg-obsidian-950 border border-zinc-800 text-zinc-500 hover:text-red-400 hover:border-red-500/40 text-xs inline-flex items-center transition-colors"
+                            title="Delete order"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))
@@ -588,7 +686,7 @@ export default function AdminOrdersPage() {
               </div>
 
               {/* Modal footer actions */}
-              <div className="flex justify-between items-center pt-2">
+              <div className="flex flex-wrap justify-between items-center gap-3 pt-3 border-t border-zinc-800">
                 <Link
                   href={`/checkout/success?tx_ref=${selectedOrder.txRef}`}
                   target="_blank"
@@ -598,12 +696,22 @@ export default function AdminOrdersPage() {
                   <span>Open Printable Official Invoice</span>
                 </Link>
 
-                <button
-                  onClick={() => setSelectedOrder(null)}
-                  className="px-5 py-2 rounded-xl bg-obsidian-850 border border-zinc-700 text-xs text-ivory-100 hover:bg-obsidian-800"
-                >
-                  Close
-                </button>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => handleDeleteOrder(selectedOrder.id, selectedOrder.txRef)}
+                    className="px-3 py-1.5 rounded-xl bg-red-950/40 hover:bg-red-900/60 border border-red-500/30 text-red-400 text-xs flex items-center space-x-1.5 transition-colors"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span>Delete</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedOrder(null)}
+                    className="px-5 py-1.5 rounded-xl bg-obsidian-850 border border-zinc-700 text-xs text-ivory-100 hover:bg-obsidian-800 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>

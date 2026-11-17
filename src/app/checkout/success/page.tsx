@@ -107,11 +107,15 @@ function CheckoutSuccessContent() {
             localStorage.setItem(`atiye_completed_order_${verifiedOrder.txRef}`, JSON.stringify(verifiedOrder));
             localStorage.setItem("atiye_last_completed_order", JSON.stringify(verifiedOrder));
 
-            // Maintain completed orders list
-            const existingRaw = localStorage.getItem("atiye_completed_orders_list");
+            // Maintain completed orders list across atiye_completed_orders & atiye_completed_orders_list
+            const existingRaw =
+              localStorage.getItem("atiye_completed_orders_list") ||
+              localStorage.getItem("atiye_completed_orders");
             const existingList: Order[] = existingRaw ? JSON.parse(existingRaw) : [];
             const filtered = existingList.filter((o) => o.txRef !== verifiedOrder!.txRef);
-            localStorage.setItem("atiye_completed_orders_list", JSON.stringify([verifiedOrder, ...filtered]));
+            const updatedCompletedList = [verifiedOrder, ...filtered];
+            localStorage.setItem("atiye_completed_orders_list", JSON.stringify(updatedCompletedList));
+            localStorage.setItem("atiye_completed_orders", JSON.stringify(updatedCompletedList));
 
             // Clear pending snapshot
             localStorage.removeItem(`atiye_pending_order_${txRef}`);

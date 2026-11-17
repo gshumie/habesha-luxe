@@ -61,7 +61,10 @@ async function processVerification(txRef: string, fallbackOrder?: Partial<Order>
   if (verifyResult.success) {
     const updatedOrder = orderStore.updatePaymentStatus(txRef, "paid", {
       chapaTransactionId: verifyResult.data?.reference || `CHAPA-VERIFIED-${Date.now()}`,
-      paymentMethod: verifyResult.data?.method || "Telebirr / CBE Birr (Chapa Direct)",
+      paymentMethod:
+        fallbackOrder?.paymentMethod ||
+        verifyResult.data?.method ||
+        "Telebirr / CBE Birr (Chapa Direct)",
       paymentReference: verifyResult.data?.reference,
     });
 
